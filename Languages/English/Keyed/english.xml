@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SyrThrumkinStealHorn>steal</SyrThrumkinStealHorn>
+	
+	<SyrThrumkinSettingsCategory>Thrumkin</SyrThrumkinSettingsCategory>
+	<SyrThrumkin_useUnsupportedHair>Use unsupported hair</SyrThrumkin_useUnsupportedHair>
+	<SyrThrumkin_useUnsupportedHairTooltip>Allows thrumkin to spawn with any style of hair instead of just with their own hair styles.</SyrThrumkin_useUnsupportedHairTooltip>
+	<SyrThrumkin_defaultSettings>Reset to default</SyrThrumkin_defaultSettings>
+	<SyrThrumkin_defaultSettingsTooltip>Reset settings to default values</SyrThrumkin_defaultSettingsTooltip>
+
+	<ThrumkinThrumboTameSuccess>{0} successfully tamed {1} with the help of their natural similarity.</ThrumkinThrumboTameSuccess>
+	<ThrumkinThrumboTameNameSuccess>{0} successfully tamed {1} with the help of their natural similarity and named [PAWN_objective] {2}.</ThrumkinThrumboTameNameSuccess>
+
+</LanguageData>
