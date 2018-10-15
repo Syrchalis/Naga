@@ -22,7 +22,7 @@ namespace SyrNaga
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        public override string SettingsCategory() => "SyrThrumkinSettingsCategory".Translate();
+        public override string SettingsCategory() => "SyrNagaSettingsCategory".Translate();
 
         public override void DoSettingsWindowContents(Rect inRect)
         {

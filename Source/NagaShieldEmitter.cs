@@ -20,12 +20,20 @@ namespace SyrNaga
                 float radius = this.GetStatValue(NagaDefOf.ShieldEmitterRadius, true);
                 float maxShield = this.GetStatValue(StatDefOf.EnergyShieldEnergyMax, true);
                 float shieldDecay = this.GetStatValue(NagaDefOf.ShieldEmitterDecayRate, true);
-                Log.Message("ShieldEmitter Radius: " + radius + " / MaxShield: " + maxShield + " / ShieldDecayRate: " + shieldDecay);
+                //Log.Message("ShieldEmitter Radius: " + radius + " / MaxShield: " + maxShield + " / ShieldDecayRate: " + shieldDecay);
                 foreach (Thing t in GenRadial.RadialDistinctThingsAround(Wearer.Position, Wearer.Map, radius, true))
                 {
                     Pawn pawn = t as Pawn;
                     if (pawn != null && pawn.Faction != null && !pawn.HostileTo(Wearer))
                     {
+                        if (pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
+                        {
+                            ShieldHediff oldShield = pawn.health.hediffSet.GetFirstHediffOfDef(NagaDefOf.NagaShieldEmitter, false) as ShieldHediff;
+                            if (oldShield.shieldCurrent <= maxShield)
+                            {
+                                pawn.health.RemoveHediff(oldShield);
+                            }
+                        }
                         Hediff hediff = pawn.health.AddHediff(NagaDefOf.NagaShieldEmitter);
                         ShieldHediff shieldHediff = hediff as ShieldHediff;
                         shieldHediff.shieldMax *= maxShield;
@@ -66,7 +74,7 @@ namespace SyrNaga
             {
                 return;
             }
-            float num = Rand.Range(25f, 40f);
+            float num = Rand.Range(20f, 30f);
             EmitterMote emitterMote = (EmitterMote)ThingMaker.MakeThing(mote, null);
             emitterMote.Scale = 1f;
             emitterMote.exactRotation = (targetCell - thrower.DrawPos).AngleFlat();

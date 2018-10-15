@@ -18,7 +18,32 @@ namespace SyrNaga
     {
         static HarmonyPatches()
         {
+            femaleVariants = TextureVariants(true);
+            maleVariants = TextureVariants(false);
         }
+        public static int TextureVariants(bool female)
+        {
+            int count = 0;
+            ThingDef_AlienRace thingDef_AlienRace = (NagaDefOf.Naga as ThingDef_AlienRace);
+            string path;
+            if (female)
+            {
+                path = "Things/Naga/Body/Naked_Female";
+            }
+            else
+            {
+                path = "Things/Naga/Body/Naked_Male";
+            }
+            Texture2D texture = ContentFinder<Texture2D>.Get(path + "_east", false);
+            while (texture != null)
+            {
+                count++;
+                texture = ContentFinder<Texture2D>.Get(path + count + "_east", false);
+            }
+            return count;
+        }
+        public static int femaleVariants;
+        public static int maleVariants;
     }
 
     [HarmonyPatch(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), new Type[] { typeof(Pawn), typeof(SkillDef) })]
@@ -33,6 +58,10 @@ namespace SyrNaga
                 if (roll < 0.5f)
                 {
                     __result += 1;
+                    if (__result > QualityCategory.Legendary)
+                    {
+                        __result = QualityCategory.Legendary;
+                    }
                 }
             }
         }
@@ -50,7 +79,8 @@ namespace SyrNaga
                 CompIngredients compIngr = __instance.TryGetComp<CompIngredients>();
                 if (compIngr != null)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None);
+                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None) || 
+                        compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
                     bool nonMeat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
@@ -75,6 +105,10 @@ namespace SyrNaga
                     {
                         nutritionIngested *= 1f;
                     }
+                    else if ((__instance.def.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None)
+                    {
+                        nutritionIngested *= 1f;
+                    }
                     else if ((__instance.def.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None)
                     {
                         nutritionIngested *= 0.2f;
@@ -95,7 +129,8 @@ namespace SyrNaga
                 CompIngredients compIngr = foodSource.TryGetComp<CompIngredients>();
                 if (compIngr != null)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None);
+                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None) ||
+                        compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
                     bool nonMeat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
@@ -113,6 +148,10 @@ namespace SyrNaga
                 else
                 {
                     if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None)
+                    {
+                        __result += 10f;
+                    }
+                    else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None)
                     {
                         __result += 10f;
                     }
@@ -148,24 +187,91 @@ namespace SyrNaga
                 AlienPartGenerator.AlienComp alienComp = __result.TryGetComp<AlienPartGenerator.AlienComp>();
                 if (alienComp?.skinColor != null && alienComp.skinColor == new Color(1.0f, 1.0f, 1.0f))
                 {
-                    if (Rand.Chance(0.5f))
+                    List <ColorPair> colorList = new List<ColorPair>()
                     {
-                        alienComp.skinColor = orangeL;
-                        alienComp.skinColorSecond = orange;
-                    }
-                    else
-                    {
-                        alienComp.skinColor = greenL;
-                        alienComp.skinColorSecond = green;
-                    }
+                        new ColorPair(orange1, orange2), 
+                        new ColorPair(green1, green2),
+                        new ColorPair(black1, black2),
+                        new ColorPair(red1, red2),
+                        new ColorPair(white1, white2),
+                        new ColorPair(yellow1, yellow2),
+                        new ColorPair(blue1, blue2),
+                        new ColorPair(purple1, purple2),
+                        new ColorPair(aqua1, aqua2),
+                        new ColorPair(green1, aqua2),
+                        new ColorPair(yellow1, green2),
+                        new ColorPair(orange1, red2)
+                    };
+                    ColorPair randomColorPair = colorList.RandomElement();
+                    alienComp.skinColor = randomColorPair.color;
+                    alienComp.skinColorSecond = randomColorPair.colorTwo;
                 }
             }
         }
-        public static Color orange = new Color(0.8f, 0.5f, 0.1f);
-        public static Color orangeL = new Color(0.8f, 0.7f, 0.6f);
-        public static Color green = new Color(0.25f, 0.5f, 0.25f);
-        public static Color greenL = new Color(0.6f, 0.8f, 0.6f);
+        public static Color orange1 = new Color(0.875f, 0.75f, 0.625f);
+        public static Color orange2 = new Color(0.875f, 0.5f, 0.125f);
+        public static Color green1 = new Color(0.625f, 0.875f, 0.625f);
+        public static Color green2 = new Color(0.25f, 0.625f, 0.25f);
+        public static Color black1 = new Color(0.5f, 0.5f, 0.5f);
+        public static Color black2 = new Color(0.25f, 0.25f, 0.25f);
+        public static Color red1 = new Color(0.75f, 0.375f, 0.375f);
+        public static Color red2 = new Color(0.625f, 0.125f, 0.125f);
+        public static Color white1 = new Color(0.95f, 1f, 0.95f);
+        public static Color white2 = new Color(0.95f, 1f, 0.95f);
+        public static Color yellow1 = new Color(0.75f, 0.875f, 0.5f);
+        public static Color yellow2 = new Color(0.625f, 0.75f, 0.25f);
+        public static Color blue1 = new Color(0.625f, 0.75f, 0.875f);
+        public static Color blue2 = new Color(0.25f, 0.5f, 0.75f);
+        public static Color purple1 = new Color(0.75f, 0.625f, 0.875f);
+        public static Color purple2 = new Color(0.5f, 0.25f, 0.75f);
+        public static Color aqua1 = new Color(0.625f, 0.875f, 0.75f);
+        public static Color aqua2 = new Color(0.25f, 0.75f, 0.5f);
+
     }
+    public struct ColorPair
+    {
+        public ColorPair(Color color, Color colorTwo)
+        {
+            this.color = color;
+            this.colorTwo = colorTwo;
+        }
+        public Color colorTwo;
+        public Color color;
+    }
+    [HarmonyPatch(typeof(PawnGraphicSet), nameof(PawnGraphicSet.ResolveAllGraphics))]
+    public static class ResolveAllGraphicsPatch
+    {
+        [HarmonyPostfix]
+        public static void ResolveAllGraphics_Postfix(ref PawnGraphicSet __instance)
+        {
+            Pawn pawn = __instance.pawn;
+            ThingDef_AlienRace thingDef_AlienRace;
+            if (pawn?.def != null && pawn.def == NagaDefOf.Naga && (thingDef_AlienRace = (pawn.def as ThingDef_AlienRace)) != null)
+            {
+                GraphicPaths currentGraphicPath = thingDef_AlienRace.alienRace.graphicPaths.GetCurrentGraphicPath(pawn.ageTracker.CurLifeStage);
+                string nakedPath = AlienPartGenerator.GetNakedPath(pawn.story.bodyType, currentGraphicPath.body, thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.useGenderedBodies ? pawn.gender.ToString() : "");
+                int variantIndex = pawn.thingIDNumber % ((pawn.gender == Gender.Female) ? HarmonyPatches.femaleVariants : HarmonyPatches.maleVariants);
+                if (variantIndex != 0)
+                {
+                    __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(nakedPath + variantIndex.ToString(),
+                    (ContentFinder<Texture2D>.Get(nakedPath + "_northm", false) == null) ? ShaderDatabase.Cutout : ShaderDatabase.CutoutComplex,
+                    Vector2.one,
+                    __instance.pawn.story.SkinColor,
+                    thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.SkinColor(pawn, false));
+                }
+            }
+        }
+        public static GraphicPaths GetCurrentGraphicPath(this List<GraphicPaths> list, LifeStageDef lifeStageDef)
+        {
+            return list.FirstOrDefault(delegate (GraphicPaths gp)
+            {
+                List<LifeStageDef> lifeStageDefs = gp.lifeStageDefs;
+                return lifeStageDefs != null && lifeStageDefs.Contains(lifeStageDef);
+            }) ?? list.First<GraphicPaths>();
+        }
+    }
+
+
     [HarmonyPatch(typeof(ApparelUtility), nameof(ApparelUtility.HasPartsToWear))]
     public static class HasPartsToWearPatch
     {

@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -54,11 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefOf.cs" />
+    <Compile Include="Graphic_Naga.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="ShieldHediff.cs" />
     <Compile Include="NagaShieldBelt.cs" />
     <Compile Include="NagaShieldEmitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillNeed_DirectNaga.cs" />
     <Compile Include="SyrNagaCore.cs" />
     <Compile Include="SyrNagaSettings.cs" />
     <Compile Include="ThoughtWorker_NagaThought.cs" />
