@@ -36,13 +36,13 @@
     <showIfUndefined>false</showIfUndefined>
     <parts>
       <li Class="StatPart_Quality">
-        <factorAwful>0.66</factorAwful>
-        <factorPoor>0.833</factorPoor>
+        <factorAwful>0.75</factorAwful>
+        <factorPoor>0.875</factorPoor>
         <factorNormal>1</factorNormal>
-        <factorGood>1.167</factorGood>
-        <factorExcellent>1.33</factorExcellent>
-        <factorMasterwork>1.5</factorMasterwork>
-        <factorLegendary>1.667</factorLegendary>
+        <factorGood>1.125</factorGood>
+        <factorExcellent>1.25</factorExcellent>
+        <factorMasterwork>1.375</factorMasterwork>
+        <factorLegendary>1.5</factorLegendary>
       </li>
     </parts>
   </StatDef>

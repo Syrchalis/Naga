@@ -7,7 +7,7 @@
     <additionalHediffs>
       <li>
         <hediff>NagaVenom</hediff>
-        <severityPerDamageDealt>0.05</severityPerDamageDealt>
+        <severityPerDamageDealt>0.025</severityPerDamageDealt>
         <victimSeverityScaling>ToxicSensitivity</victimSeverityScaling>
       </li>
     </additionalHediffs>

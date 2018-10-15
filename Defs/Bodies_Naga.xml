@@ -16,6 +16,13 @@
   <BodyPartGroupDef>
     <defName>TailAttackTool</defName>
     <label>tail</label>
+    <listOrder>11</listOrder>
+  </BodyPartGroupDef>
+
+  <BodyPartGroupDef>
+    <defName>Fangs</defName>
+    <label>fangs</label>
+    <listOrder>197</listOrder>
   </BodyPartGroupDef>
 
   <BodyDef>
@@ -202,7 +209,7 @@
                   <def>Jaw</def>
                   <coverage>0.15</coverage>
                   <groups>
-                    <li>Teeth</li>
+                    <li>Fangs</li>
                     <li>FullHead</li>
                   </groups>
                 </li>
@@ -428,7 +435,7 @@
         </li>
         <li>
           <def>NagaTail</def>
-          <coverage>0.4</coverage>
+          <coverage>0.25</coverage>
           <groups>
             <li>TailAttackTool</li>
             <li>Legs</li>

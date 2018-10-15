@@ -12,8 +12,8 @@
 			<useOnlyPawnkindBackstories>true</useOnlyPawnkindBackstories>
 			<disallowedTraits>
 				<li>Brawler</li>
-				<li>CreepyBreathing</li>
-				<li>Abrasive</li>
+				<li>Nudist</li>
+				<li>PsychicSensitivity</li>
 				<li>Xenophobia</li>
 				<li>Gourmand</li>
 				<li>Cannibal</li>
@@ -238,7 +238,7 @@
 	</alienRace>
     <statBases>
       <MarketValue>1750</MarketValue>
-      <MoveSpeed>6.0</MoveSpeed>
+      <MoveSpeed>5.6</MoveSpeed>
       <Flammability>1.0</Flammability>
       <ComfyTemperatureMin>20</ComfyTemperatureMin>
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
@@ -260,10 +260,10 @@
 			<DrugCookingSpeed>2</DrugCookingSpeed>
 			<ButcheryFleshEfficiency>1.25</ButcheryFleshEfficiency>
 			<AnimalGatherYield>0.75</AnimalGatherYield>
-			<PlantWorkSpeed>0.5</PlantWorkSpeed>
+			<PlantWorkSpeed>0.75</PlantWorkSpeed>
 			<PlantHarvestYield>0.75</PlantHarvestYield>
 			<ConstructionSpeed>0.8</ConstructionSpeed>
-			<UnskilledLaborSpeed>0.5</UnskilledLaborSpeed>
+			<UnskilledLaborSpeed>0.75</UnskilledLaborSpeed>
     </statBases>
     <tools>
       <li>
@@ -275,14 +275,6 @@
         <cooldownTime>1.5</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
         <chanceFactor>0.15</chanceFactor>
-        <surpriseAttack>
-          <extraMeleeDamages>
-            <li>
-              <def>Stun</def>
-              <amount>10</amount>
-            </li>
-          </extraMeleeDamages>
-        </surpriseAttack>
       </li>
       <li>
         <label>right fist</label>
@@ -293,6 +285,27 @@
         <cooldownTime>1.5</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
         <chanceFactor>0.15</chanceFactor>
+      </li>
+      <li>
+        <label>fangs</label>
+        <capacities>
+          <li>VenomousBite</li>
+        </capacities>
+        <power>4.0</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>Fangs</linkedBodyPartsGroup>
+				<chanceFactor>3</chanceFactor>
+      </li>
+      <li>
+        <label>tail</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.33</chanceFactor>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
@@ -301,26 +314,6 @@
             </li>
           </extraMeleeDamages>
         </surpriseAttack>
-      </li>
-      <li>
-        <label>fangs</label>
-        <capacities>
-          <li>VenomousBite</li>
-        </capacities>
-        <power>5.0</power>
-        <cooldownTime>3</cooldownTime>
-        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-      </li>
-      <li>
-        <label>tail</label>
-        <capacities>
-          <li>Blunt</li>
-        </capacities>
-        <power>8</power>
-        <cooldownTime>2</cooldownTime>
-        <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
-        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-        <chanceFactor>0.25</chanceFactor>
       </li>
     </tools>
     <race>
@@ -335,11 +328,10 @@
 			<bloodDef>Filth_BloodNaga</bloodDef>
       <body>Naga_Body</body>
       <baseBodySize>1</baseBodySize>
-      <baseHealthScale>0.75</baseHealthScale>
+      <baseHealthScale>0.66</baseHealthScale>
 			<baseHungerRate>0.75</baseHungerRate>
       <foodType>OmnivoreHuman</foodType>
       <gestationPeriodDays>45</gestationPeriodDays>
-	  	<nuzzleMtbHours>24</nuzzleMtbHours>
       <manhunterOnDamageChance>0.50</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
       <litterSizeCurve>
@@ -397,6 +389,8 @@
       </hediffGiverSets>
     </race>
     <recipes>
+			<li>InstallBionicNagaTail</li>
+			<li>InstallArchotechNagaTail</li>
     </recipes>
   </AlienRace.ThingDef_AlienRace>
   

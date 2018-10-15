@@ -148,7 +148,7 @@
       <li>
         <kindDef>Trader</kindDef>
         <traders>
-          <Town_Trader>1</Town_Trader>
+          <Naga_Trader>1</Naga_Trader>
         </traders>
         <carriers>
           <Muffalo>6</Muffalo>

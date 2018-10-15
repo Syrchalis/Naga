@@ -142,6 +142,46 @@
   </PawnKindDef>
 
   <PawnKindDef ParentName="NagaMercenaryBase">
+    <defName>Naga_Trader</defName>
+    <label>naga trader</label>
+    <trader>true</trader>
+    <combatPower>40</combatPower>
+    <isFighter>false</isFighter>
+    <gearHealthRange>
+      <min>1</min>
+      <max>1</max>
+    </gearHealthRange>
+    <itemQuality>Good</itemQuality>
+    <weaponTags>
+      <li>SimpleNagaGun</li>
+    </weaponTags>
+    <weaponMoney>
+      <min>200</min>
+      <max>400</max>
+    </weaponMoney>
+    <apparelMoney>
+      <min>600</min>
+      <max>900</max>
+    </apparelMoney>
+    <apparelTags>
+      <li>IndustrialMilitaryBasic</li>
+      <li>IndustrialMilitaryAdvanced</li>
+      <li>NagaBeltPop</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_BowlerHat</li>
+    </apparelRequired>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>
+      <min>600</min>
+      <max>1500</max>
+    </techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="NagaMercenaryBase">
     <defName>Naga_Drifter</defName>
     <label>naga drifter</label>
     <combatPower>35</combatPower>
