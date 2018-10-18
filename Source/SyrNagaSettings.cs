@@ -11,12 +11,12 @@ namespace SyrNaga
 {
     class SyrNagaSettings : ModSettings
     {
-        public static bool useUnsupportedHair = false;
+        //public static bool useUnsupportedHair = false;
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<bool>(ref useUnsupportedHair, "SyrNaga_useUnsupportedHair", false, true);
+            //Scribe_Values.Look<bool>(ref useUnsupportedHair, "SyrNaga_useUnsupportedHair", false, true);
         }
     }
 }

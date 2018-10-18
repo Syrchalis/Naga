@@ -134,7 +134,7 @@ namespace SyrNaga
                     bool nonMeat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
-                        __result += 10f;
+                        __result += 40f;
                     }
                     else if (meat && nonMeat)
                     {
@@ -149,15 +149,15 @@ namespace SyrNaga
                 {
                     if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None)
                     {
-                        __result += 10f;
+                        __result += 40f;
                     }
                     else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None)
                     {
-                        __result += 10f;
+                        __result += 40f;
                     }
                     else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Corpse) != FoodTypeFlags.None)
                     {
-                        __result += 10f;
+                        __result += 20f;
                     }
                     else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None)
                     {

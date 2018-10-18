@@ -30,11 +30,11 @@ namespace SyrNaga
             {
                 Listing_Standard listing_Standard = new Listing_Standard();
                 listing_Standard.Begin(inRect);
-                listing_Standard.CheckboxLabeled("SyrThrumkin_useUnsupportedHair".Translate(), ref SyrNagaSettings.useUnsupportedHair, ("SyrThrumkin_useUnsupportedHairTooltip".Translate()));
-                listing_Standard.Gap(24f);
+                //listing_Standard.CheckboxLabeled("SyrThrumkin_useUnsupportedHair".Translate(), ref SyrNagaSettings.useUnsupportedHair, ("SyrThrumkin_useUnsupportedHairTooltip".Translate()));
+                //listing_Standard.Gap(24f);
                 if (listing_Standard.ButtonText("SyrThrumkin_defaultSettings".Translate(), "SyrThrumkin_defaultSettingsTooltip".Translate()))
                 {
-                    SyrNagaSettings.useUnsupportedHair = false;
+                    //SyrNagaSettings.useUnsupportedHair = false;
                 }
                 listing_Standard.End();
                 settings.Write();
