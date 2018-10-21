@@ -74,7 +74,7 @@ namespace SyrNaga
         public static void IngestedCalculateAmounts_Postfix(Thing __instance, Pawn ingester, float nutritionWanted, ref float nutritionIngested)
         {
             
-            if (ingester.def == NagaDefOf.Naga)
+            if (ingester?.def != null && __instance?.def?.ingestible != null && ingester.def == NagaDefOf.Naga)
             {
                 CompIngredients compIngr = __instance.TryGetComp<CompIngredients>();
                 if (compIngr != null)
@@ -124,7 +124,7 @@ namespace SyrNaga
         [HarmonyPostfix]
         public static void FoodOptimality_Postfix(ref float __result, Pawn eater, Thing foodSource)
         {
-            if (eater?.def != null && foodSource?.def != null && eater.def == NagaDefOf.Naga)
+            if (eater?.def != null && foodSource?.def?.ingestible?.foodType != null && eater.def == NagaDefOf.Naga)
             {
                 CompIngredients compIngr = foodSource.TryGetComp<CompIngredients>();
                 if (compIngr != null)
