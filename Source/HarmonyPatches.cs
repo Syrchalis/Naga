@@ -79,9 +79,9 @@ namespace SyrNaga
                 CompIngredients compIngr = __instance.TryGetComp<CompIngredients>();
                 if (compIngr != null)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None) || 
-                        compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
-                    bool nonMeat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None);
+                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None) || 
+                        compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
+                    bool nonMeat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
                         nutritionIngested *= 1f;
@@ -129,9 +129,9 @@ namespace SyrNaga
                 CompIngredients compIngr = foodSource.TryGetComp<CompIngredients>();
                 if (compIngr != null)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None) ||
-                        compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
-                    bool nonMeat = compIngr.ingredients.Exists(i => (i.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None);
+                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None) ||
+                        compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
+                    bool nonMeat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
                         __result += 40f;
@@ -281,6 +281,10 @@ namespace SyrNaga
             if (apparel?.apparel?.bodyPartGroups != null && p?.def != null)
             {
                 if (apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Legs) && !apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Torso) && p.def == NagaDefOf.Naga)
+                {
+                    __result = false;
+                }
+                if (apparel.apparel.bodyPartGroups.Contains(NagaDefOf.Feet) && p.def == NagaDefOf.Naga)
                 {
                     __result = false;
                 }

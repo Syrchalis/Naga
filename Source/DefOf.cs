@@ -25,6 +25,7 @@ namespace SyrNaga
         public static BodyDef Naga_Body;
         public static BodyPartDef NagaTail;
         public static BodyPartGroupDef TailAttackTool;
+        public static BodyPartGroupDef Feet;
         public static ThoughtDef NagaThought;
         public static HediffDef HiddenNagaHediff;
         public static HediffDef NagaShieldEmitter;
