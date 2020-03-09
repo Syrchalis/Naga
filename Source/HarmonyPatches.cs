@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +18,12 @@ namespace SyrNaga
     {
         static HarmonyPatches()
         {
+            var harmony = new Harmony("Syrchalis.Rimworld.Naga");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
             femaleVariants = TextureVariants(true);
             maleVariants = TextureVariants(false);
         }
+
         public static int TextureVariants(bool female)
         {
             int count = 0;
@@ -357,7 +360,7 @@ namespace SyrNaga
                 if (flag2)
                 {
                     ShieldHediff shield = __instance.health.hediffSet.GetFirstHediffOfDef(NagaDefOf.NagaShieldEmitter, false) as ShieldHediff;
-                    __result = __result.Add(new Gizmo_HediffComp_Shield
+                    __result = __result.AddItem(new Gizmo_HediffComp_Shield
                     {
                         shield = shield
                     });
@@ -366,11 +369,11 @@ namespace SyrNaga
         }
     }
 
-    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal", new[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool), typeof(bool) })]
+    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal", new[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool), typeof(bool), typeof(bool) })]
     public static class RenderPawnInternalPatch
     {
         [HarmonyPostfix]
-        public static void RenderPawnInternal_Postfix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump)
+        public static void RenderPawnInternal_Postfix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
         {
             Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
             if (pawn.health != null && pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
