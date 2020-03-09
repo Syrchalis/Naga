@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>BionicNagaTail</defName>
+    <label>bionic tail</label>
+    <labelNoun>a bionic naga tail</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>tail</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>10</power>
+            <cooldownTime>1.5</cooldownTime>
+            <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+            <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+            <chanceFactor>0.5</chanceFactor>
+            <surpriseAttack>
+              <extraMeleeDamages>
+                <li>
+                  <def>Stun</def>
+                  <amount>14</amount>
+                </li>
+              </extraMeleeDamages>
+            </surpriseAttack>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>BionicNagaTail</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.25</partEfficiency>
+    </addedPartProps>
+  </HediffDef>
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>ArchotechNagaTail</defName>
+    <label>archotech tail</label>
+    <labelNoun>an archotech naga tail</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>tail</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>14</power>
+            <cooldownTime>1.5</cooldownTime>
+            <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+            <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+            <chanceFactor>0.75</chanceFactor>
+            <surpriseAttack>
+              <extraMeleeDamages>
+                <li>
+                  <def>Stun</def>
+                  <amount>20</amount>
+                </li>
+              </extraMeleeDamages>
+            </surpriseAttack>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>ArchotechNagaTail</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.50</partEfficiency>
+    </addedPartProps>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>NagaVenom</defName>
+    <label>naga venom</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0, 0.75, 0)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>minor</label>
+        <minSeverity>0.0</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+        </capMods>
+        <painOffset>0.2</painOffset>
+      </li>
+      <li>
+        <label>major</label>
+        <minSeverity>0.4</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+        </capMods>
+        <painOffset>0.4</painOffset>
+      </li>
+      <li>
+        <label>extreme</label>
+        <minSeverity>0.8</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+        <painOffset>0.6</painOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>HiddenNagaHediff</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>naga</label>
+    <labelNoun>naga</labelNoun>
+    <defaultLabelColor>(1,1,1)</defaultLabelColor>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+      <stages>
+        <li>
+          <becomeVisible>false</becomeVisible>
+          <statOffsets>
+            <ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+            <MeleeDodgeChance>10</MeleeDodgeChance>
+          </statOffsets>
+        </li>
+      </stages>
+  </HediffDef>
+
+  <HediffDef>
+		<defName>NagaShieldEmitter</defName>
+		<label>naga shield emitter</label>
+		<defaultLabelColor>(0.25 ,0.75, 0.375)</defaultLabelColor>
+		<hediffClass>SyrNaga.ShieldHediff</hediffClass>
+		<initialSeverity>1.0</initialSeverity>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+        <becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-12</severityPerDay>
+      </li>
+    </comps>
+	</HediffDef>
+  
+</Defs>
