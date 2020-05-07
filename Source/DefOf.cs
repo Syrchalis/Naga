@@ -20,6 +20,7 @@ namespace SyrNaga
         public static ThingDef Naga;
         public static ThingDef Mote_ShieldEmitter;
         public static ThingDef Mote_ShieldEmitterBurst;
+        public static ThingDef MealLavish;
         public static StatDef ShieldEmitterRadius;
         public static StatDef ShieldEmitterDecayRate;
         public static BodyDef Naga_Body;

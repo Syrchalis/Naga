@@ -408,7 +408,7 @@
 
   <PawnKindDef ParentName="NagaMercenaryBase">
     <defName>Naga_Mercenary_Heavy</defName>
-    <label>naga heavy mercenary</label>
+    <label>heavy naga mercenary</label>
     <labelPlural>heavy mercenaries</labelPlural>
     <combatPower>150</combatPower>
     <gearHealthRange>
@@ -542,6 +542,122 @@
         </li>
       </subOptionsChooseOne>
     </inventoryOptions>
+  </PawnKindDef>
+
+  <PawnKindDef Name="NagaTribalBase" Abstract="True">
+    <race>Naga</race>
+    <defaultFactionType>TribeCivil</defaultFactionType>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.1</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.1</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Tribal</li>
+        </categories>
+        <commonality>0.8</commonality>
+      </li>
+    </backstoryFilters>
+    <chemicalAddictionChance>0.05</chemicalAddictionChance>
+    <invNutrition>2.55</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
+    <itemQuality>Normal</itemQuality>
+    <maxGenerationAge>65</maxGenerationAge>
+    <apparelTags>
+      <li>Neolithic</li>
+    </apparelTags>
+    <inventoryOptions>
+      <skipChance>0.5</skipChance>
+      <subOptionsChooseOne>
+        <li>
+          <thingDef>Jade</thingDef>
+          <countRange>
+            <min>5</min>
+            <max>10</max>
+          </countRange>
+        </li>
+        <li>
+          <thingDef>MedicineHerbal</thingDef>
+          <countRange>
+            <min>1</min>
+            <max>3</max>
+          </countRange>
+        </li>
+      </subOptionsChooseOne>
+    </inventoryOptions>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="NagaTribalBase">
+    <defName>Naga_Archer</defName>
+    <label>naga archer</label>
+    <combatPower>48</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <gearHealthRange>0.5~1.8</gearHealthRange>
+    <apparelMoney>180~350</apparelMoney>
+    <weaponMoney>80~80</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedBasic</li>
+    </weaponTags>
+    <techHediffsMoney>50~50</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+    </techHediffsTags>
+    <techHediffsChance>0.03</techHediffsChance>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="NagaTribalBase">
+    <defName>Naga_Hunter</defName>
+    <label>naga hunter</label>
+    <combatPower>65</combatPower>
+    <gearHealthRange>0.5~1.8</gearHealthRange>
+    <apparelMoney>200~300</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_WarVeil</li>
+    </apparelRequired>
+    <weaponMoney>100~100</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedDecent</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="NagaTribalBase">
+    <defName>Naga_HeavyArcher</defName>
+    <label>heavy naga archer</label>
+    <combatPower>90</combatPower>
+    <apparelMoney>200~550</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_WarMask</li>
+    </apparelRequired>
+    <weaponMoney>250~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="NagaTribalBase">
+    <defName>Naga_Warrior</defName>
+    <label>naga warrior</label>
+    <combatPower>60</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <canBeSapper>true</canBeSapper>
+    <gearHealthRange>0.5~1.8</gearHealthRange>
+    <apparelMoney>200~300</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_WarVeil</li>
+    </apparelRequired>
+    <weaponMoney>150~150</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
   </PawnKindDef>
   
 </Defs>

@@ -2,5 +2,9 @@
 <LanguageData>
 
 	<SyrNagaSettingsCategory>Naga</SyrNagaSettingsCategory>
+	<SyrNaga_useStandardAI>Use standard AI to look for food</SyrNaga_useStandardAI>
+	<SyrNaga_useStandardAITooltip>Will disable the advanced AI looking for nutritious food and instead make naga look for food like humans - can fix issues with food AI.</SyrNaga_useStandardAITooltip>
+	<SyrNaga_defaultSettings>Default</SyrNaga_defaultSettings>
+	<SyrNaga_defaultSettingsTooltip>Reset settings to default values</SyrNaga_defaultSettingsTooltip>
 
 </LanguageData>

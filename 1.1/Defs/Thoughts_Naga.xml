@@ -25,7 +25,7 @@
 		<stages>
 			<li>
 				<label>cannibalism</label>
-				<description>I ate the meat of another naga, somehow it feels wrong.</description>
+				<description>I ate the meat of another naga, not a good feeling.</description>
 				<baseMoodEffect>-5</baseMoodEffect>
 			</li>
 		</stages>
@@ -44,7 +44,7 @@
 		<stages>
 			<li>
 				<label>I butchered naga</label>
-				<description>I butchered another naga, meat is meat, but somehow it feels wrong.</description>
+				<description>I butchered another naga, we do what we have to, even if it feels wrong.</description>
 				<baseMoodEffect>-2</baseMoodEffect>
 			</li>
 		</stages>
@@ -62,7 +62,7 @@
 		<stages>
 			<li>
 				<label>we butchered naga</label>
-				<description>We butchered another naga, meat is meat, but somehow it feels wrong.</description>
+				<description>We butchered another naga, we do what we have to, even if it feels wrong.</description>
 				<baseMoodEffect>-2</baseMoodEffect>
 			</li>
 		</stages>

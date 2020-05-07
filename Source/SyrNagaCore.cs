@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +18,6 @@ namespace SyrNaga
         public SyrNagaCore(ModContentPack content) : base(content)
         {
             settings = GetSettings<SyrNagaSettings>();
-            var harmony = HarmonyInstance.Create("Syrchalis.Rimworld.Naga");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         public override string SettingsCategory() => "SyrNagaSettingsCategory".Translate();
@@ -30,11 +28,13 @@ namespace SyrNaga
             {
                 Listing_Standard listing_Standard = new Listing_Standard();
                 listing_Standard.Begin(inRect);
-                //listing_Standard.CheckboxLabeled("SyrThrumkin_useUnsupportedHair".Translate(), ref SyrNagaSettings.useUnsupportedHair, ("SyrThrumkin_useUnsupportedHairTooltip".Translate()));
+                //listing_Standard.CheckboxLabeled("SyrNaga_useUnsupportedHair".Translate(), ref SyrNagaSettings.useUnsupportedHair, ("SyrNaga_useUnsupportedHairTooltip".Translate()));
+                listing_Standard.CheckboxLabeled("SyrNaga_useStandardAI".Translate(), ref SyrNagaSettings.useStandardAI, "SyrNaga_useStandardAITooltip".Translate());
                 //listing_Standard.Gap(24f);
                 if (listing_Standard.ButtonText("SyrNaga_defaultSettings".Translate(), "SyrNaga_defaultSettingsTooltip".Translate()))
                 {
                     //SyrNagaSettings.useUnsupportedHair = false;
+                    SyrNagaSettings.useStandardAI = false;
                 }
                 listing_Standard.End();
                 settings.Write();

@@ -10,6 +10,7 @@ using UnityEngine;
 using Verse.AI;
 using AlienRace;
 using Verse.Sound;
+using Verse.Grammar;
 
 namespace SyrNaga
 {
@@ -22,7 +23,15 @@ namespace SyrNaga
             harmony.PatchAll(Assembly.GetExecutingAssembly());
             femaleVariants = TextureVariants(true);
             maleVariants = TextureVariants(false);
+            if (!ThrumkinActive)
+            {
+                harmony.Patch(AccessTools.Method(typeof(GrammarUtility), nameof(GrammarUtility.RulesForPawn), new Type[]
+                { typeof(string), typeof(Name), typeof(string), typeof(PawnKindDef), typeof(Gender), typeof(Faction), typeof(int), typeof(int), typeof(string),
+                typeof(bool), typeof(bool), typeof(bool), typeof(List<RoyalTitle>), typeof(Dictionary<string, string>), typeof(bool) }),
+                null, new HarmonyMethod(AccessTools.Method(typeof(RulesForPawnPatch), nameof(RulesForPawnPatch.RulesForPawn_Postfix))), null, null);
+            }
         }
+        public static bool ThrumkinActive => ModsConfig.ActiveModsInLoadOrder.Any(m => m.PackageId == "syrchalis.thrumkin");
 
         public static int TextureVariants(bool female)
         {
@@ -53,12 +62,13 @@ namespace SyrNaga
     public class GenerateQualityCreatedByPawnPatch
     {
         [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
         public static void GenerateQualityCreatedByPawn_Postfix(ref QualityCategory __result, Pawn pawn, SkillDef relevantSkill)
         {
-            if (pawn.def == NagaDefOf.Naga)
+            if (pawn?.def != null && pawn.def == NagaDefOf.Naga)
             {
                 float roll = Rand.Value;
-                if (roll < 0.5f)
+                if (roll < 0.2f)
                 {
                     __result += 1;
                     if (__result > QualityCategory.Legendary)
@@ -79,42 +89,59 @@ namespace SyrNaga
             
             if (ingester?.def != null && __instance?.def?.ingestible != null && ingester.def == NagaDefOf.Naga)
             {
-                CompIngredients compIngr = __instance.TryGetComp<CompIngredients>();
-                if (compIngr != null)
+                if (__instance.def == ThingDefOf.MealSurvivalPack || __instance.def == ThingDefOf.Pemmican || __instance.def == NagaDefOf.MealLavish)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None) || 
-                        compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
+                    return;
+                }
+                CompIngredients compIngr = __instance.TryGetComp<CompIngredients>();
+                if (compIngr?.ingredients != null)
+                {
+                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None);
+                    bool animalP = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
                     bool nonMeat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) == FoodTypeFlags.None);
+                    bool nonAnimalP = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
-                        nutritionIngested *= 1f;
+                        nutritionIngested *= 1.0f;
+                    }
+                    else if (animalP && !nonAnimalP)
+                    {
+                        nutritionIngested *= 1.0f;
+                    }
+                    else if (meat && animalP)
+                    {
+                        nutritionIngested *= 1.2f;
                     }
                     else if (meat && nonMeat)
                     {
-                        nutritionIngested *= 0.6f;
+                        nutritionIngested *= 0.7f;
                     }
-                    else if (!meat && nonMeat)
+                    else if (animalP && nonMeat)
                     {
-                        nutritionIngested *= 0.2f;
+                        nutritionIngested *= 0.8f;
+                    }
+                    else
+                    {
+                        nutritionIngested *= 0.35f;
                     }
                 }
                 else
                 {
                     if ((__instance.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None)
                     {
-                        nutritionIngested *= 1f;
-                    }
-                    else if ((__instance.def.ingestible.foodType & FoodTypeFlags.Corpse) != FoodTypeFlags.None)
-                    {
-                        nutritionIngested *= 1f;
+                        nutritionIngested *= 1.0f;
                     }
                     else if ((__instance.def.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None)
                     {
-                        nutritionIngested *= 1f;
+                        nutritionIngested *= 1.2f;
                     }
-                    else if ((__instance.def.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None)
+                    else if ((__instance.def.ingestible.foodType & FoodTypeFlags.Corpse) != FoodTypeFlags.None)
                     {
-                        nutritionIngested *= 0.2f;
+                        nutritionIngested *= 1.0f;
+                    }
+                    else
+                    {
+                        nutritionIngested *= 0.35f;
                     }
                 }
             }
@@ -124,50 +151,82 @@ namespace SyrNaga
     [HarmonyPatch(typeof(FoodUtility), nameof(FoodUtility.FoodOptimality))]
     public static class FoodOptimalityPatch
     {
+        [HarmonyPriority(Priority.First)]
         [HarmonyPostfix]
         public static void FoodOptimality_Postfix(ref float __result, Pawn eater, Thing foodSource)
         {
+            if (SyrNagaSettings.useStandardAI)
+            {
+                return;
+            }
+            else
+            {
+                __result = FoodOptimality_Method(__result, eater, foodSource);
+            }
+        }
+
+        public static float FoodOptimality_Method(float __result, Pawn eater, Thing foodSource)
+        {
+            float foodValue = __result;
             if (eater?.def != null && foodSource?.def?.ingestible?.foodType != null && eater.def == NagaDefOf.Naga)
             {
-                CompIngredients compIngr = foodSource.TryGetComp<CompIngredients>();
-                if (compIngr != null)
+                if (foodSource.def == ThingDefOf.MealSurvivalPack || foodSource.def == ThingDefOf.Pemmican || foodSource.def == NagaDefOf.MealLavish)
                 {
-                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None) ||
-                        compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
+                    return foodValue;
+                }
+                CompIngredients compIngr = foodSource.TryGetComp<CompIngredients>();
+                if (compIngr?.ingredients != null)
+                {
+                    bool meat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) != FoodTypeFlags.None);
+                    bool animalP = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None);
                     bool nonMeat = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.Meat) == FoodTypeFlags.None);
+                    bool nonAnimalP = compIngr.ingredients.Exists(i => ((i.ingestible?.foodType ?? FoodTypeFlags.None) & FoodTypeFlags.AnimalProduct) == FoodTypeFlags.None);
                     if (meat && !nonMeat)
                     {
-                        __result += 40f;
+                        foodValue += 20f;
+                    }
+                    else if (animalP && !nonAnimalP)
+                    {
+                        foodValue += 20f;
+                    }
+                    else if (meat && animalP)
+                    {
+                        foodValue += 40f;
                     }
                     else if (meat && nonMeat)
                     {
-                        __result -= 10f;
+                        foodValue += 0f;
                     }
-                    else if (!meat && nonMeat)
+                    else if (animalP && nonMeat)
                     {
-                        __result -= 40f;
+                        foodValue += 10f;
+                    }
+                    else
+                    {
+                        foodValue -= 20f;
                     }
                 }
                 else
                 {
                     if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Meat) != FoodTypeFlags.None)
                     {
-                        __result += 40f;
+                        foodValue += 20f;
                     }
                     else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.AnimalProduct) != FoodTypeFlags.None)
                     {
-                        __result += 40f;
+                        foodValue += 40f;
                     }
                     else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Corpse) != FoodTypeFlags.None)
                     {
-                        __result += 20f;
+                        foodValue += 20f;
                     }
-                    else if ((foodSource.def.ingestible.foodType & FoodTypeFlags.Meat) == FoodTypeFlags.None)
+                    else
                     {
-                        __result -= 40f;
+                        foodValue -= 20f;
                     }
                 }
             }
+            return foodValue;
         }
     }
     [HarmonyPatch(typeof(PawnGenerator), "TryGenerateNewPawnInternal")]
@@ -380,6 +439,40 @@ namespace SyrNaga
             {
                 ShieldHediff shield = pawn.health.hediffSet.GetFirstHediffOfDef(NagaDefOf.NagaShieldEmitter, false) as ShieldHediff;
                 shield.DrawWornExtras();
+            }
+        }
+    }
+
+    public static class RulesForPawnPatch
+    {
+        public static IEnumerable<Rule> RulesForPawn_Postfix(IEnumerable<Rule> __result, string pawnSymbol, string title, Gender gender, PawnKindDef kind)
+        {
+            List<Rule> ruleList = __result.ToList();
+            string prefix = "";
+            if (!pawnSymbol.NullOrEmpty())
+            {
+                prefix = prefix + pawnSymbol + "_";
+            }
+            for (int i = 0; i < ruleList.Count; i++)
+            {
+                Rule_String r = ruleList[i] as Rule_String;
+                if (r != null && r.keyword == (prefix + "titleIndef"))
+                {
+                    ruleList[i] = new Rule_String(prefix + "titleIndef", Find.ActiveLanguageWorker.WithIndefiniteArticle(kind.race.label + " " + title, gender, false, false));
+                }
+                else if (r != null && r.keyword == (prefix + "titleDef"))
+                {
+                    ruleList[i] = new Rule_String(prefix + "titleDef", Find.ActiveLanguageWorker.WithDefiniteArticle(kind.race.label + " " + title, gender, false, false));
+                }
+                else if (r != null && r.keyword == (prefix + "title"))
+                {
+                    ruleList[i] = new Rule_String(prefix + "title", kind.race.label + " " + title);
+                }
+            }
+            __result = ruleList;
+            foreach (Rule rule in __result)
+            {
+                yield return rule;
             }
         }
     }

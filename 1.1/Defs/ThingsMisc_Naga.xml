@@ -79,4 +79,45 @@
     </mote>
   </ThingDef>
 
+  <ThingDef ParentName="MealCooked">
+    <defName>MealSimple_Naga</defName>
+    <label>simple meal (meat)</label>
+    <description>A simple meal quickly cooked from meat or animal products only. This is useful only for races that need meat as nutrition, like naga.</description>
+    <graphicData>
+      <texPath>Things/Item/Simple_meat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <WorkToMake>300</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealSimple</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="MealCooked">
+    <defName>MealFine_Naga</defName>
+    <label>fine meal (meat)</label>
+    <description>A complex dish assembled with care from a meat and animal products. This is useful only for races that need meat as nutrition, like naga.</description>
+    <graphicData>
+      <texPath>Things/Item/Fine_meat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <WorkToMake>450</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>AteFineMeal</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
 </Defs>

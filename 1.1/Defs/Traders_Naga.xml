@@ -205,6 +205,12 @@
 			<li Class="StockGenerator_Category">
 				<categoryDef>Textiles</categoryDef>
 			</li>
+      <li Class="StockGenerator_Slaves">
+        <countRange>
+          <min>0</min>
+          <max>2</max>
+        </countRange>
+      </li>
       <li Class="StockGenerator_BuyExpensiveSimple" />
       <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
       <li Class="StockGenerator_BuyTradeTag"><tag>ImplantEmpireCommon</tag></li>

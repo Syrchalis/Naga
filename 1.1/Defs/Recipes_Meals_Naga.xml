@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecipeDef Name="CookMealBase_Naga" Abstract="True">
+    <fixedIngredientFilter>
+      <categories>
+        <li>MeatRaw</li>
+        <li>AnimalProductRaw</li>
+      </categories>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <categories>
+        <li>MeatRaw</li>
+        <li>AnimalProductRaw</li>
+      </categories>
+      <disallowedThingDefs>
+        <li>Meat_Megaspider</li>
+        <li>InsectJelly</li>
+      </disallowedThingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="CookMealBase_Naga">
+    <defName>CookMealSimple_Naga</defName>
+    <label>cook simple meal (meat)</label>
+    <description>Cook a straightforward meal from one ingredient.</description>
+    <jobString>Cooking simple meal (meat).</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>0.5</count>
+      </li>
+    </ingredients>
+    <products>
+      <MealSimple_Naga>1</MealSimple_Naga>
+    </products>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>Campfire</li>
+    </recipeUsers>
+  </RecipeDef>
+
+<RecipeDef ParentName="CookMealBase_Naga">
+    <defName>CookMealSimpleBulk_Naga</defName>
+    <label>cook simple meal (meat) x4</label>
+    <description>Cook 4 straightforward meals from one ingredient.</description>
+    <jobString>Cooking 4 simple meals (meat).</jobString>
+    <workAmount>960</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>2.0</count>
+      </li>
+    </ingredients>
+    <products>
+      <MealSimple_Naga>4</MealSimple_Naga>
+    </products>
+    <workSkill>Cooking</workSkill>
+  </RecipeDef>
+
+  <RecipeDef ParentName="CookMealBase_Naga">
+    <defName>CookMealFine_Naga</defName>
+    <label>cook fine meal (meat)</label>
+    <description>Cook a somewhat complex meal from a combination of meat and plant ingredients.</description>
+    <jobString>Cooking fine meal (meat).</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>0.4</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>0.1</count>
+      </li>
+    </ingredients>
+    <products>
+      <MealFine_Naga>1</MealFine_Naga>
+    </products>
+    <skillRequirements>
+      <Cooking>6</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef ParentName="CookMealBase_Naga">
+    <defName>CookMealFineBulk_Naga</defName>
+    <label>cook fine meal (meat) x4</label>
+    <description>Cook 4 somewhat complex meals from a combination of meat and plant ingredients.</description>
+    <jobString>Cooking 4 fine meals (meat).</jobString>
+    <workAmount>1440</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>1.6</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>AnimalProductRaw</li>
+          </categories>
+        </filter>
+        <count>0.4</count>
+      </li>
+    </ingredients>
+    <products>
+      <MealFine_Naga>4</MealFine_Naga>
+    </products>
+    <skillRequirements>
+      <Cooking>6</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+
+</Defs>

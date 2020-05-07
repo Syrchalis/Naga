@@ -136,10 +136,7 @@
       <stages>
         <li>
           <becomeVisible>false</becomeVisible>
-          <statOffsets>
-            <ShootingAccuracyPawn>5</ShootingAccuracyPawn>
-            <MeleeDodgeChance>10</MeleeDodgeChance>
-          </statOffsets>
+          <naturalHealingFactor>1.5</naturalHealingFactor>
         </li>
       </stages>
   </HediffDef>

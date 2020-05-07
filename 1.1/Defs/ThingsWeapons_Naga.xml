@@ -23,11 +23,11 @@
       <AccuracyShort>0.75</AccuracyShort>
       <AccuracyMedium>0.55</AccuracyMedium>
       <AccuracyLong>0.45</AccuracyLong>
-      <RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.2</RangedWeapon_Cooldown>
     </statBases>
     <costList>
       <Steel>30</Steel>
-      <Jade>5</Jade>
+      <Jade>10</Jade>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <weaponTags>
@@ -76,8 +76,8 @@
     <projectile>
       <flyOverhead>false</flyOverhead>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>14</damageAmountBase>
-      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.33</armorPenetrationBase>
       <stoppingPower>1</stoppingPower>
       <speed>80</speed>
     </projectile>
@@ -95,25 +95,25 @@
     <statBases>
       <WorkToMake>11000</WorkToMake>
       <Mass>2.5</Mass>
-      <AccuracyTouch>0.90</AccuracyTouch>
+      <AccuracyTouch>0.85</AccuracyTouch>
       <AccuracyShort>0.65</AccuracyShort>
       <AccuracyMedium>0.35</AccuracyMedium>
-      <AccuracyLong>0.15</AccuracyLong>
-      <RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+      <AccuracyLong>0.20</AccuracyLong>
+      <RangedWeapon_Cooldown>1.2</RangedWeapon_Cooldown>
     </statBases>
     <costList>
-      <Steel>45</Steel>
-      <Jade>5</Jade>
-      <ComponentIndustrial>3</ComponentIndustrial>
+      <Steel>75</Steel>
+      <Jade>20</Jade>
+      <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_NagaSMG</defaultProjectile>
-        <warmupTime>0.5</warmupTime>
-        <range>19.9</range>
-        <burstShotCount>4</burstShotCount>
+        <warmupTime>0.7</warmupTime>
+        <range>21.9</range>
+        <burstShotCount>5</burstShotCount>
         <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
         <soundCast>Shot_ChargeRifle</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -150,7 +150,7 @@
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>6</damageAmountBase>
+      <damageAmountBase>9</damageAmountBase>
       <armorPenetrationBase>0.2</armorPenetrationBase>
       <speed>80</speed>
     </projectile>
@@ -172,19 +172,19 @@
       <AccuracyShort>0.87</AccuracyShort>
       <AccuracyMedium>0.77</AccuracyMedium>
       <AccuracyLong>0.64</AccuracyLong>
-      <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
     </statBases>
     <costList>
       <Steel>60</Steel>
-      <Jade>10</Jade>
-      <ComponentIndustrial>4</ComponentIndustrial>
+      <Jade>20</Jade>
+      <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_NagaShotgun</defaultProjectile>
-        <warmupTime>1.0</warmupTime>
+        <warmupTime>0.9</warmupTime>
         <range>17.9</range>
         <soundCast>Shot_Shotgun</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -221,9 +221,9 @@
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>21</damageAmountBase>
+      <damageAmountBase>18</damageAmountBase>
       <stoppingPower>3</stoppingPower>
-      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <armorPenetrationBase>0.33</armorPenetrationBase>
       <speed>80</speed>
     </projectile>
   </ThingDef>
@@ -248,7 +248,7 @@
     </statBases>
     <costList>
       <Steel>60</Steel>
-      <Jade>15</Jade>
+      <Jade>35</Jade>
       <ComponentIndustrial>7</ComponentIndustrial>
     </costList>
     <verbs>
@@ -299,7 +299,7 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>12</damageAmountBase>
-      <armorPenetrationBase>0.3</armorPenetrationBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
       <speed>80</speed>
     </projectile>
   </ThingDef>
@@ -321,11 +321,11 @@
       <AccuracyShort>0.70</AccuracyShort>
       <AccuracyMedium>0.86</AccuracyMedium>
       <AccuracyLong>0.88</AccuracyLong>
-      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>2.3</RangedWeapon_Cooldown>
     </statBases>
     <costList>
       <Steel>60</Steel>
-      <Jade>20</Jade>
+      <Jade>40</Jade>
       <ComponentIndustrial>8</ComponentIndustrial>
     </costList>
     <verbs>
@@ -333,7 +333,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_NagaSniper</defaultProjectile>
-        <warmupTime>3.0</warmupTime>
+        <warmupTime>2.0</warmupTime>
         <range>44.9</range>
         <soundCast>NagaSniperShot</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -373,9 +373,9 @@
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>30</damageAmountBase>
+      <damageAmountBase>25</damageAmountBase>
       <stoppingPower>1.5</stoppingPower>
-      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <armorPenetrationBase>0.67</armorPenetrationBase>
       <speed>100</speed>
     </projectile>
   </ThingDef>

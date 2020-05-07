@@ -4,20 +4,27 @@
   <AlienRace.ThingDef_AlienRace ParentName="BasePawn">
     <defName>Naga</defName>
     <label>naga</label>
-    <description>A naga.</description>
+    <description>The Naga are a technologically advanced race without a functional goverment or law enforcement since their homeworld has become inhabitable.  This means they can be found mostly on space stations and ships and occassionally on Rimworlds as well.\n\nThey tend to work as mercenaries for the highest bidder and offer their superior skills with guns. Not just as excellent shooters, but also as weapon manufacturers. Their plasma technology is only rivaled by the charge weapons of glitterworlds. Naga are also known for their regenerative abilities and proficiency at disassembling mechanoids.\n\nDespite this their way of life does not go well with others and thus they struggle to find allies among other races.\n\nGood at: Shooting, Butchering, Mechanoid Disassembly, Psychics, Quality Crafting/Construction\nBad at: Melee, Plants, Animals, Enduring Pain</description>
 	<alienRace>
 		<generalSettings>
-			<maleGenderProbability>0.5</maleGenderProbability>
+			<maleGenderProbability>0.4</maleGenderProbability>
 			<immuneToAge>false</immuneToAge>
 			<disallowedTraits>
 				<li>Brawler</li>
-				<li>Nudist</li>
-				<li>PsychicSensitivity</li>
-				<li>Xenophobia</li>
-				<li>Gourmand</li>
-				<li>Cannibal</li>
+				<li>Ascetic</li>
+				<li>Undergrounder</li>
+				<li>BodyPurist</li>
+				<li>SlowLearner</li>
 			</disallowedTraits>
 			<forcedRaceTraitEntries>
+				<li>
+					<defName>Bloodlust</defName>
+					<chance>5</chance>
+				</li>
+				<li>
+					<defName>FastLearner</defName>
+					<chance>10</chance>
+				</li>
 			</forcedRaceTraitEntries>
 			<maxDamageForSocialfight>4</maxDamageForSocialfight>
 			<allowHumanBios>true</allowHumanBios>
@@ -236,33 +243,27 @@
 		</raceRestriction>
 	</alienRace>
     <statBases>
-      <MarketValue>1750</MarketValue>
-      <MoveSpeed>5.6</MoveSpeed>
-      <Flammability>1.0</Flammability>
-      <ComfyTemperatureMin>20</ComfyTemperatureMin>
-      <ComfyTemperatureMax>45</ComfyTemperatureMax>
-      <LeatherAmount>50</LeatherAmount>
-	  <RoyalFavorValue>4</RoyalFavorValue>
-		<NegotiationAbility>0.8</NegotiationAbility>
-		<TradePriceImprovement>1.2</TradePriceImprovement>
-		<AimingDelayFactor>0.75</AimingDelayFactor>
-		<PainShockThreshold>0.9</PainShockThreshold>
-		<PsychicSensitivity>1.5</PsychicSensitivity>
+		<MarketValue>1750</MarketValue>
+		<MoveSpeed>5.0</MoveSpeed>
+		<Mass>80</Mass>
+		<Flammability>0.33</Flammability>
+		<LeatherAmount>75</LeatherAmount>
+		<RoyalFavorValue>2</RoyalFavorValue>
+		<ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+		<PsychicSensitivity>1.2</PsychicSensitivity>
+		<PsychicEntropyRecoveryRate>9.6</PsychicEntropyRecoveryRate>
 		<ToxicSensitivity>0.5</ToxicSensitivity>
-		<GlobalLearningFactor>1.25</GlobalLearningFactor>
-		<HuntingStealth>2</HuntingStealth>
-		<MedicalTendQuality>1.5</MedicalTendQuality>
-		<MedicalSurgerySuccessChance>1.5</MedicalSurgerySuccessChance>
-		<ResearchSpeed>1.25</ResearchSpeed>
-		<DrugSynthesisSpeed>2</DrugSynthesisSpeed>
-		<DrugCookingSpeed>2</DrugCookingSpeed>
-		<ButcheryFleshEfficiency>1.25</ButcheryFleshEfficiency>
-		<AnimalGatherYield>0.75</AnimalGatherYield>
-		<PlantWorkSpeed>0.75</PlantWorkSpeed>
-		<PlantHarvestYield>0.75</PlantHarvestYield>
-		<ConstructionSpeed>0.8</ConstructionSpeed>
-		<GeneralLaborSpeed>0.75</GeneralLaborSpeed>
-		<PsychicEntropyRecoveryRate>7</PsychicEntropyRecoveryRate>
+		<ComfyTemperatureMin>21</ComfyTemperatureMin>
+		<ComfyTemperatureMax>36</ComfyTemperatureMax>
+		<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
+		<PainShockThreshold>0.64</PainShockThreshold>
+		<AimingDelayFactor>0.8</AimingDelayFactor>
+		<TameAnimalChance>0.8</TameAnimalChance>
+		<TrainAnimalChance>0.8</TrainAnimalChance>
+		<AnimalGatherYield>0.8</AnimalGatherYield>
+		<PlantWorkSpeed>0.8</PlantWorkSpeed>
+		<ButcheryFleshEfficiency>1.1</ButcheryFleshEfficiency>
+		<ButcheryMechanoidEfficiency>1.5</ButcheryMechanoidEfficiency>
     </statBases>
     <tools>
       <li>
@@ -273,7 +274,7 @@
         <power>4</power>
         <cooldownTime>1.5</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
-        <chanceFactor>0.15</chanceFactor>
+        <chanceFactor>0.25</chanceFactor>
       </li>
       <li>
         <label>right fist</label>
@@ -283,7 +284,7 @@
         <power>4</power>
         <cooldownTime>1.5</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
-        <chanceFactor>0.15</chanceFactor>
+        <chanceFactor>0.25</chanceFactor>
       </li>
       <li>
         <label>fangs</label>
@@ -293,7 +294,7 @@
         <power>4.0</power>
         <cooldownTime>2.0</cooldownTime>
         <linkedBodyPartsGroup>Fangs</linkedBodyPartsGroup>
-				<chanceFactor>3</chanceFactor>
+				<chanceFactor>1</chanceFactor>
       </li>
       <li>
         <label>tail</label>
@@ -304,7 +305,7 @@
         <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-        <chanceFactor>0.33</chanceFactor>
+        <chanceFactor>0.5</chanceFactor>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
@@ -320,15 +321,14 @@
       <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
       <intelligence>Humanlike</intelligence>
       <makesFootprints>true</makesFootprints>
-      <lifeExpectancy>80</lifeExpectancy>
+      <lifeExpectancy>70</lifeExpectancy>
       <leatherDef>Leather_Lizard</leatherDef>
       <nameCategory>HumanStandard</nameCategory>
-		<fleshType>Naga</fleshType>
-		<bloodDef>Filth_BloodNaga</bloodDef>
+			<fleshType>Naga</fleshType>
+			<bloodDef>Filth_BloodNaga</bloodDef>
       <body>Naga_Body</body>
       <baseBodySize>1</baseBodySize>
-      <baseHealthScale>0.66</baseHealthScale>
-		<baseHungerRate>0.75</baseHungerRate>
+      <baseHealthScale>0.8</baseHealthScale>
       <foodType>OmnivoreHuman</foodType>
       <gestationPeriodDays>45</gestationPeriodDays>
       <manhunterOnDamageChance>0.50</manhunterOnDamageChance>
@@ -409,6 +409,19 @@
 					<factionDefs>
 						<li>NagaPlayerColony</li>
 						<li>PlayerColony</li>
+					</factionDefs>
+				</li>
+				<li>
+					<pawnKindEntries>
+						<li>
+							<kindDefs>
+								<li>Naga_Colonist</li>
+							</kindDefs>
+							<chance>3</chance>
+						</li>
+					</pawnKindEntries>
+					<factionDefs>
+						<li>PlayerTribe</li>
 					</factionDefs>
 				</li>
 			</startingColonists>
