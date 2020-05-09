@@ -5,6 +5,8 @@
     <defName>Caravan_Naga_Blackmarket</defName>
     <label>blackmarket trader</label>
     <commonality>1</commonality>
+    <orbital>false</orbital>
+    <requestable>true</requestable>
     <stockGenerators>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Silver</thingDef>
@@ -206,10 +208,7 @@
 				<categoryDef>Textiles</categoryDef>
 			</li>
       <li Class="StockGenerator_Slaves">
-        <countRange>
-          <min>0</min>
-          <max>2</max>
-        </countRange>
+        <countRange>0~2</countRange>
       </li>
       <li Class="StockGenerator_BuyExpensiveSimple" />
       <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
@@ -224,6 +223,7 @@
     <defName>Orbital_Naga_Blackmarket</defName>
     <label>blackmarket trader</label>
     <orbital>true</orbital>
+    <requestable>false</requestable>
     <commonality>1</commonality>
     <stockGenerators>
       <li Class="StockGenerator_SingleDef">
@@ -425,6 +425,9 @@
 			<li Class="StockGenerator_Category">
 				<categoryDef>Textiles</categoryDef>
 			</li>
+      <li Class="StockGenerator_Slaves">
+        <countRange>0~2</countRange>
+      </li>
       <li Class="StockGenerator_BuyExpensiveSimple" />
       <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
       <li Class="StockGenerator_BuyTradeTag"><tag>ImplantEmpireCommon</tag></li>
@@ -437,6 +440,8 @@
   <TraderKindDef>
     <defName>Visitor_Naga</defName>
     <label>trader</label>
+    <orbital>false</orbital>
+    <requestable>false</requestable>
     <stockGenerators>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Silver</thingDef>
@@ -663,10 +668,7 @@
         </countRange>
       </li>
       <li Class="StockGenerator_Slaves">
-        <countRange>
-          <min>0</min>
-          <max>2</max>
-        </countRange>
+        <countRange>1~3</countRange>
       </li>
       <li Class="StockGenerator_Animals">
         <checkTemperature>true</checkTemperature>
