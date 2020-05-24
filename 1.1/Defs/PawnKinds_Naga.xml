@@ -239,20 +239,15 @@
       <max>0.6</max>
     </gearHealthRange>
     <itemQuality>Poor</itemQuality>
-    <apparelMoney>
-      <min>150</min>
-      <max>380</max>
-    </apparelMoney>
+    <apparelMoney>90~280</apparelMoney>
     <apparelAllowHeadgearChance>0.2</apparelAllowHeadgearChance>
     <apparelTags>
       <li>IndustrialBasic</li>
     </apparelTags>
-    <weaponMoney>
-      <min>400</min>
-      <max>600</max>
-    </weaponMoney>
+    <weaponMoney>60~200</weaponMoney>
     <weaponTags>
-      <li>SimpleNagaGun</li>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
     </weaponTags>
     <techHediffsChance>0.05</techHediffsChance>
     <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
@@ -285,7 +280,7 @@
   </PawnKindDef>
 
   <PawnKindDef Abstract="True" Name="NagaGrenadierBase" ParentName="NagaMercenaryBase">
-		<combatPower>65</combatPower>
+		<combatPower>70</combatPower>
 		<gearHealthRange>
 			<min>0.7</min>
 			<max>2.3</max>
@@ -339,7 +334,7 @@
   <PawnKindDef ParentName="NagaMercenaryBase">
     <defName>Naga_Mercenary_Gunner</defName>
     <label>naga mercenary gunner</label>
-    <combatPower>90</combatPower>
+    <combatPower>120</combatPower>
     <gearHealthRange>
       <min>0.7</min>
       <max>3.2</max>
@@ -381,7 +376,7 @@
   <PawnKindDef ParentName="NagaMercenaryBase">
     <defName>Naga_Mercenary_Sniper</defName>
     <label>naga mercenary sniper</label>
-    <combatPower>110</combatPower>
+    <combatPower>150</combatPower>
     <gearHealthRange>
       <min>0.7</min>
       <max>3.2</max>
@@ -410,7 +405,7 @@
     <defName>Naga_Mercenary_Heavy</defName>
     <label>heavy naga mercenary</label>
     <labelPlural>heavy mercenaries</labelPlural>
-    <combatPower>150</combatPower>
+    <combatPower>180</combatPower>
     <gearHealthRange>
       <min>0.7</min>
       <max>3.2</max>
@@ -437,7 +432,7 @@
   </PawnKindDef>
 
 <PawnKindDef Abstract="True" Name="NagaMercenaryEliteBase" ParentName="NagaMercenaryBase">
-    <combatPower>150</combatPower>
+    <combatPower>180</combatPower>
     <maxGenerationAge>45</maxGenerationAge>
     <backstoryCryptosleepCommonality>0.5</backstoryCryptosleepCommonality>
     <gearHealthRange>
