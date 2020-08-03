@@ -229,98 +229,45 @@ namespace SyrNaga
             return foodValue;
         }
     }
-    [HarmonyPatch(typeof(PawnGenerator), "TryGenerateNewPawnInternal")]
-    public static class TryGenerateNewPawnInternalPatch
+    [HarmonyPatch(typeof(PawnGenerator), "GenerateNewPawnInternal")]
+    public static class GenerateNewPawnInternalPatch
     {
         [HarmonyPostfix]
-        public static void TryGenerateNewPawnInternal_Postfix(ref Pawn __result)
+        public static void GenerateNewPawnInternal_Postfix(ref PawnGenerationRequest request, Pawn __result)
         {
-            if (__result?.def != null && __result.def == NagaDefOf.Naga)
+            if (__result != null && __result.def == NagaDefOf.Naga)
             {
                 __result.health.AddHediff(HediffMaker.MakeHediff(NagaDefOf.HiddenNagaHediff, __result));
-                if (__result?.gender != null && __result.gender == Gender.Male)
-                {
-                    __result.story.bodyType = BodyTypeDefOf.Male;
-                }
-                if (__result?.gender != null && __result.gender == Gender.Female)
-                {
-                    __result.story.bodyType = BodyTypeDefOf.Female;
-                }
-                AlienPartGenerator.AlienComp alienComp = __result.TryGetComp<AlienPartGenerator.AlienComp>();
-                if (alienComp?.skinColor != null && alienComp.skinColor == new Color(1.0f, 1.0f, 1.0f))
-                {
-                    List <ColorPair> colorList = new List<ColorPair>()
-                    {
-                        new ColorPair(orange1, orange2), 
-                        new ColorPair(green1, green2),
-                        new ColorPair(black1, black2),
-                        new ColorPair(red1, red2),
-                        new ColorPair(white1, white2),
-                        new ColorPair(yellow1, yellow2),
-                        new ColorPair(blue1, blue2),
-                        new ColorPair(purple1, purple2),
-                        new ColorPair(aqua1, aqua2),
-                        new ColorPair(green1, aqua2),
-                        new ColorPair(yellow1, green2),
-                        new ColorPair(orange1, red2)
-                    };
-                    ColorPair randomColorPair = colorList.RandomElement();
-                    alienComp.skinColor = randomColorPair.color;
-                    alienComp.skinColorSecond = randomColorPair.colorTwo;
-                }
             }
         }
-        public static Color orange1 = new Color(0.875f, 0.75f, 0.625f);
-        public static Color orange2 = new Color(0.875f, 0.5f, 0.125f);
-        public static Color green1 = new Color(0.625f, 0.875f, 0.625f);
-        public static Color green2 = new Color(0.25f, 0.625f, 0.25f);
-        public static Color black1 = new Color(0.5f, 0.5f, 0.5f);
-        public static Color black2 = new Color(0.25f, 0.25f, 0.25f);
-        public static Color red1 = new Color(0.75f, 0.375f, 0.375f);
-        public static Color red2 = new Color(0.625f, 0.125f, 0.125f);
-        public static Color white1 = new Color(0.95f, 1f, 0.95f);
-        public static Color white2 = new Color(0.95f, 1f, 0.95f);
-        public static Color yellow1 = new Color(0.75f, 0.875f, 0.5f);
-        public static Color yellow2 = new Color(0.625f, 0.75f, 0.25f);
-        public static Color blue1 = new Color(0.625f, 0.75f, 0.875f);
-        public static Color blue2 = new Color(0.25f, 0.5f, 0.75f);
-        public static Color purple1 = new Color(0.75f, 0.625f, 0.875f);
-        public static Color purple2 = new Color(0.5f, 0.25f, 0.75f);
-        public static Color aqua1 = new Color(0.625f, 0.875f, 0.75f);
-        public static Color aqua2 = new Color(0.25f, 0.75f, 0.5f);
+    }
 
-    }
-    public struct ColorPair
-    {
-        public ColorPair(Color color, Color colorTwo)
-        {
-            this.color = color;
-            this.colorTwo = colorTwo;
-        }
-        public Color colorTwo;
-        public Color color;
-    }
+
     [HarmonyPatch(typeof(PawnGraphicSet), nameof(PawnGraphicSet.ResolveAllGraphics))]
     public static class ResolveAllGraphicsPatch
     {
-        [HarmonyPostfix]
-        public static void ResolveAllGraphics_Postfix(ref PawnGraphicSet __instance)
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.Last)]
+        public static void ResolveAllGraphics_Prefix(PawnGraphicSet __instance)
         {
             Pawn pawn = __instance.pawn;
-            ThingDef_AlienRace thingDef_AlienRace;
-            if (pawn?.def != null && pawn.def == NagaDefOf.Naga && (thingDef_AlienRace = (pawn.def as ThingDef_AlienRace)) != null)
+            ThingDef_AlienRace thingDef_AlienRace = pawn.def as ThingDef_AlienRace;
+            if (pawn?.def != null && pawn.def == NagaDefOf.Naga && thingDef_AlienRace != null)
             {
+                //Changing body to random pattern variation and changing second color to appropiate pair
+                AlienPartGenerator alienPartGenerator = thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator;
                 GraphicPaths currentGraphicPath = thingDef_AlienRace.alienRace.graphicPaths.GetCurrentGraphicPath(pawn.ageTracker.CurLifeStage);
                 string nakedPath = AlienPartGenerator.GetNakedPath(pawn.story.bodyType, currentGraphicPath.body, thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.useGenderedBodies ? pawn.gender.ToString() : "");
                 int variantIndex = pawn.thingIDNumber % ((pawn.gender == Gender.Female) ? HarmonyPatches.femaleVariants : HarmonyPatches.maleVariants);
-                if (variantIndex != 0)
-                {
-                    __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(nakedPath + variantIndex.ToString(),
-                    (ContentFinder<Texture2D>.Get(nakedPath + "_northm", false) == null) ? ShaderDatabase.Cutout : ShaderDatabase.CutoutComplex,
+                __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(variantIndex == 0 ? nakedPath : nakedPath + variantIndex.ToString(),
+                    ShaderDatabase.CutoutComplex,
                     Vector2.one,
-                    __instance.pawn.story.SkinColor,
-                    thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.SkinColor(pawn, false));
-                }
+                    pawn.story.SkinColor,
+                    NagaUtility.AssignSecondColor(pawn.story.SkinColor));
+
+                //Giving normal hair colors
+                pawn.story.hairColor = PawnHairColors.RandomHairColor(pawn.story.SkinColor, 0);
+                __instance.hairGraphic = GraphicDatabase.Get<Graphic_Multi>(__instance.pawn.story.hairDef.texPath, __instance.hairGraphic.Shader, Vector2.one, pawn.story.hairColor, pawn.story.hairColor);
             }
         }
         public static GraphicPaths GetCurrentGraphicPath(this List<GraphicPaths> list, LifeStageDef lifeStageDef)

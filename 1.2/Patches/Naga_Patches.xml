@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Naga"]/statBases</xpath>
+      <value>
+        <PsychicEntropyRecoveryRate>9.6</PsychicEntropyRecoveryRate>
+      </value>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[@Name = "OutlanderFactionBase"]/pawnGroupMakers//Town_Guard/..</xpath>
+    <value>
+      <Naga_Drifter>1</Naga_Drifter>
+      <Naga_Mercenary_Gunner>1</Naga_Mercenary_Gunner>
+      <Naga_Mercenary_Sniper>0.7</Naga_Mercenary_Sniper>
+      <Naga_Mercenary_Elite>1</Naga_Mercenary_Elite>
+      <Naga_Boss>0.5</Naga_Boss>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[@Name = "TribeBase"]/pawnGroupMakers//Tribal_Archer/..</xpath>
+    <value>
+      <Naga_Archer>0.4</Naga_Archer>
+      <Naga_Hunter>0.4</Naga_Hunter>
+      <Naga_HeavyArcher>0.4</Naga_HeavyArcher>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[@Name = "TribeBase"]/pawnGroupMakers/li[3]/options</xpath>
+    <value>
+      <Naga_Warrior>0.5</Naga_Warrior>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName = "Pirate"]/pawnGroupMakers//Mercenary_Gunner/..</xpath>
+    <value>
+      <Naga_Drifter>1.5</Naga_Drifter>
+      <Naga_Mercenary_Gunner>2</Naga_Mercenary_Gunner>
+      <Naga_Mercenary_Sniper>1</Naga_Mercenary_Sniper>
+      <Naga_Mercenary_Elite>2</Naga_Mercenary_Elite>
+      <Naga_Boss>0.5</Naga_Boss>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName = "Pirate"]/pawnGroupMakers/li[5]/options</xpath>
+    <value>
+      <Naga_Mercenary_Sniper>1</Naga_Mercenary_Sniper>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName = "Pirate"]/pawnGroupMakers/li[6]/options</xpath>
+    <value>
+      <Naga_Drifter>1</Naga_Drifter>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+  <success>Always</success>
+    <xpath>Defs/FactionDef[defName = "Empire"]/pawnGroupMakers//Empire_Fighter_Trooper/..</xpath>
+    <value>
+      <Naga_Mercenary_Gunner>0.3</Naga_Mercenary_Gunner>
+      <Naga_Mercenary_Sniper>0.3</Naga_Mercenary_Sniper>
+      <Naga_Mercenary_Elite>0.3</Naga_Mercenary_Elite>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[XND] Stuffed Flaks</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationRemove">
+          <xpath>/Defs/ThingDef[defName = "Apparel_FlakTailArmor"]/costList/Steel</xpath>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]</xpath>
+          <value>
+            <costStuffCount>60</costStuffCount>
+            <stuffCategories>
+              <li>Metallic</li>
+            </stuffCategories>
+          </value>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/statBases/ArmorRating_Sharp</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/statBases/ArmorRating_Blunt</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/statBases/ArmorRating_Heat</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/colorGenerator</xpath>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/statBases/MaxHitPoints</xpath>
+          <value>
+            <MaxHitPoints>120</MaxHitPoints>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="Apparel_FlakTailArmor"]/statBases</xpath>
+          <value>
+            <StuffEffectMultiplierArmor>0.6</StuffEffectMultiplierArmor>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- <Operation Class="PatchOperationAttributeSet">
+    <xpath>Defs/StatDef[defName = "PlantHarvestYield"]/skillNeedFactors/li[@Class = "SkillNeed_Direct"]</xpath>
+    <attribute>Class</attribute>
+    <value>SyrNaga.SkillNeed_DirectNaga</value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName = "PlantHarvestYield"]/skillNeedFactors/li</xpath>
+    <value>
+      <valuesPerLevelNaga>
+        <li>0.6</li>
+        <li>0.675</li>
+        <li>0.75</li>
+        <li>0.825</li>
+        <li>0.9</li>
+        <li>0.975</li>
+        <li>1.05</li>
+        <li>1.125</li>
+        <li>1.2</li>
+        <li>1.275</li>
+        <li>1.333333333</li>
+        <li>1.346666667</li>
+        <li>1.36</li>
+        <li>1.373333333</li>
+        <li>1.386666667</li>
+        <li>1.4</li>
+        <li>1.413333333</li>
+        <li>1.426666667</li>
+        <li>1.44</li>
+        <li>1.453333333</li>
+        <li>1.466666667</li>
+      </valuesPerLevelNaga>
+    </value>
+  </Operation>-->
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "MineableJade"]/building/mineableScatterCommonality</xpath>
+    <value>
+      <mineableScatterCommonality>0.15</mineableScatterCommonality>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "MineableJade"]/building/mineableScatterLumpSizeRange</xpath>
+    <value>
+      <mineableScatterLumpSizeRange>
+        <min>3</min>
+        <max>6</max>
+      </mineableScatterLumpSizeRange>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[SYR] Prosthetic Table</li>
+    </mods>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/RecipeDef[defName="Make_ArchotechNagaTail"]/recipeUsers</xpath>
+      <value>
+        <recipeUsers>
+          <li>TableSyrProsthetics</li>
+        </recipeUsers>
+      </value>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[FSF] Vanilla Bionics Expansion</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/HediffDef[defName="ArchotechNagaTail"]</xpath>
+          <value>
+            <defaultLabelColor>(82,190,128)</defaultLabelColor>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FactionDef Parent="PlayerFactionBase">
+    <defName>NagaPlayerColony</defName>
+    <label>New Naga Camp</label>
+    <description>A camp of naga mercenaries.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>Naga_Colonist</basicMemberKind>
+    <pawnSingular>mercenary</pawnSingular>
+    <pawnsPlural>mercenaries</pawnsPlural>
+    <techLevel>Spacer</techLevel>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.3</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.2</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Pirate</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+    </backstoryFilters>
+    <factionIconPath>World/NagaBase</factionIconPath>
+    <playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
+		<factionNameMaker>NamerFactionNaga</factionNameMaker>
+    <settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+    <geneticVariance>1</geneticVariance>
+    <hairTags>
+      <li>Tribal</li>
+      <li>Rural</li>
+      <li>Urban</li>
+      <li>Punk</li>
+    </hairTags>
+		<startingResearchTags>
+			<li>ClassicStart</li>
+		</startingResearchTags>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Leather_Bird</li>
+      </thingDefs>
+    </apparelStuffFilter>
+    <colorSpectrum>
+      <li>(0, 0.737, 0.847)</li>
+    </colorSpectrum>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+
+  <FactionDef ParentName="HumanFactionBase" Name="NagaFactionBase" Abstract="True">
+    <pawnSingular>mercenary</pawnSingular>
+    <pawnsPlural>mercenaries</pawnsPlural>
+    <listOrderPriority>9</listOrderPriority>
+    <settlementGenerationWeight>0.25</settlementGenerationWeight>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canStageAttacks>true</canStageAttacks>
+    <leaderTitle>boss</leaderTitle>
+    <factionIconPath>World/NagaBase</factionIconPath>
+		<geneticVariance>0.25</geneticVariance>
+		<factionNameMaker>NamerFactionNaga</factionNameMaker>
+    <settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+    <techLevel>Industrial</techLevel>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.3</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.2</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Pirate</li>
+        </categories>
+        <commonality>0.5</commonality>
+      </li>
+    </backstoryFilters>
+    <hairTags>
+      <li>Tribal</li>
+      <li>Rural</li>
+      <li>Urban</li>
+      <li>Punk</li>
+    </hairTags>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0.5)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <caravanTraderKinds>
+      <li>Caravan_Naga_Blackmarket</li>
+		</caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Naga</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>Base_Naga</li>
+    </baseTraderKinds>
+    <allowedArrivalTemperatureRange>
+      <min>-10</min>
+      <max>55</max>
+    </allowedArrivalTemperatureRange>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(140, 70)</li>
+        <li>(800, 130)</li>
+        <li>(1300, 155)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <pawnGroupMakers>
+      <li>
+				<kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Naga_Drifter>10</Naga_Drifter>
+          <Naga_Grenadier_EMP>0.5</Naga_Grenadier_EMP>
+          <Naga_Grenadier_Destructive>2</Naga_Grenadier_Destructive>
+          <Naga_Mercenary_Gunner>10</Naga_Mercenary_Gunner>
+          <Naga_Mercenary_Heavy>3</Naga_Mercenary_Heavy>
+          <Naga_Mercenary_Sniper>7</Naga_Mercenary_Sniper>
+          <Naga_Mercenary_Elite>10</Naga_Mercenary_Elite>
+          <Naga_Boss>5</Naga_Boss>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>15</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <Naga_Grenadier_EMP>1</Naga_Grenadier_EMP>
+          <Naga_Grenadier_Destructive>10</Naga_Grenadier_Destructive>
+          <Naga_Mercenary_Gunner>3</Naga_Mercenary_Gunner>
+          <Naga_Mercenary_Heavy>5</Naga_Mercenary_Heavy>
+          <Naga_Mercenary_Elite>3</Naga_Mercenary_Elite>
+          <Naga_Boss>1</Naga_Boss>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>10</commonality>
+        <options>
+          <Naga_Mercenary_Elite>3</Naga_Mercenary_Elite>
+          <Naga_Mercenary_Sniper>10</Naga_Mercenary_Sniper>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>2.5</commonality>
+        <maxTotalPoints>1000</maxTotalPoints>
+        <options>
+          <Naga_Drifter>10</Naga_Drifter>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <Naga_Drifter>20</Naga_Drifter>
+          <Naga_Mercenary_Gunner>10</Naga_Mercenary_Gunner>
+          <Naga_Mercenary_Elite>5</Naga_Mercenary_Elite>
+          <Naga_Mercenary_Sniper>5</Naga_Mercenary_Sniper>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <Naga_Trader>1</Naga_Trader>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>5</Dromedary>
+          <Alpaca>2</Alpaca>
+          <Elephant>1</Elephant>
+        </carriers>
+        <guards>
+          <Naga_Drifter>3</Naga_Drifter>
+          <Naga_Grenadier_Destructive>1.5</Naga_Grenadier_Destructive>
+          <Naga_Mercenary_Sniper>7</Naga_Mercenary_Sniper>
+          <Naga_Mercenary_Gunner>10</Naga_Mercenary_Gunner>
+					<Naga_Mercenary_Elite>10</Naga_Mercenary_Elite>
+				</guards>
+      </li>
+      <li>
+				<kindDef>Settlement</kindDef>
+        <options>
+          <Naga_Drifter>10</Naga_Drifter>
+          <Naga_Grenadier_Destructive>2</Naga_Grenadier_Destructive>
+          <Naga_Mercenary_Sniper>10</Naga_Mercenary_Sniper>
+          <Naga_Mercenary_Gunner>10</Naga_Mercenary_Gunner>
+					<Naga_Mercenary_Elite>10</Naga_Mercenary_Elite>
+          <Naga_Boss>10</Naga_Boss>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+
+  <FactionDef ParentName="NagaFactionBase">
+    <defName>NagaMercenaries</defName>
+    <label>naga mercenaries</label>
+    <description>Naga mercenaries</description>
+    <colorSpectrum>
+      <li>(0.25, 0.75, 0.5)</li>
+    </colorSpectrum>
+    <startingGoodwill>-50</startingGoodwill>
+    <naturalColonyGoodwill>-60~-40</naturalColonyGoodwill>
+  </FactionDef>
+
+  <RulePackDef>
+    <defName>NamerFactionNaga</defName>
+    <include>
+      <li>TribalWordUtility</li>
+    </include>
+    <rulePack>
+      <rulesStrings>
+        <li>r_name->The [snake_alias]s</li>
+        <li>r_name->The [PersonBadass] [snake_alias]s</li>
+        <li>r_name->The [Enemy] [snake_alias]s</li>
+        <li>r_name->The [snake_alias]s of [ConceptBadass]</li>
+        <li>r_name->The [PersonBadass]s</li>
+        <li>r_name->The [Enemy]s</li>
+        <li>r_name->The [Weapon] [snake_alias]s</li>
+        <li>r_name->The [Weapon]s</li>
+        <li>r_name->The [Weapon] [Enemy]s</li>
+        <li>r_name->The [ColorBadass] [snake_alias]s</li>
+        <li>r_name->The [snake_alias] [groupname]</li>
+        <li>r_name->The [AdjectiveBadass] [groupname]</li>
+        <li>r_name(p=2)->The [AdjectiveBadass] [snake_alias]s</li>
+        <li>r_name(p=2)->The [naga_adjective] [groupname]</li>
+        <li>r_name(p=2)->The [naga_adjective] [snake_alias]s</li>
+        <li>r_name->[snake_alias]s of [Gore]</li>
+        <li>r_name(p=2)->[Weapon] [groupname]</li>
+        <li>r_name(p=2)->[ConceptBadass] [groupname]</li>
+        <li>r_name(p=2)->[snake_alias] of [naga_adjective]</li>
+
+        <li>snake_alias->snake</li>
+        <li>snake_alias->viper</li>
+        <li>snake_alias->python</li>
+        <li>snake_alias->mamba</li>
+        <li>snake_alias->adder</li>
+        <li>snake_alias->boa</li>
+        <li>snake_alias->cobra</li>
+        <li>snake_alias->kingsnake</li>
+        <li>snake_alias->rattlesnake</li>
+        <li>snake_alias->sidewinder</li>
+
+        <li>naga_adjective->deadly</li>
+        <li>naga_adjective->poison</li>
+        <li>naga_adjective->venom</li>
+        <li>naga_adjective->venomous</li>
+        <li>naga_adjective->slick</li>
+        <li>naga_adjective->winding</li>
+        <li>naga_adjective->coiling</li>
+        <li>naga_adjective->writhing</li>
+      </rulesStrings>
+      <rulesFiles>
+        <li>groupname->Words/Nouns/GroupNames</li>
+      </rulesFiles>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

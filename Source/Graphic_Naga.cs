@@ -8,6 +8,7 @@ using System.Text;
 
 namespace SyrNaga
 {
+    //Exists so I don't need seperate masks for each body variation, as they all use the same just different patterns
     public class Graphic_Naga : Graphic
     {
         public string GraphicPath
