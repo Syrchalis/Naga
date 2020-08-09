@@ -50,7 +50,7 @@ namespace SyrNaga
                 NagaDefOf.ShieldEmitterPop.PlayOneShot(new TargetInfo(Wearer.Position, Wearer.Map, false));
                 Destroy(DestroyMode.Vanish);
             }
-            return false;
+            return true;
         }
 
         public static Mote ShieldEmitter(Pawn caster, Map map, float radius, ThingDef moteDef)

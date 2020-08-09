@@ -379,12 +379,11 @@ namespace SyrNaga
     public static class RenderPawnInternalPatch
     {
         [HarmonyPostfix]
-        public static void RenderPawnInternal_Postfix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
+        public static void RenderPawnInternal_Postfix(PawnRenderer __instance, Pawn ___pawn, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
         {
-            Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-            if (pawn.health != null && pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
+            if (___pawn.health != null && ___pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
             {
-                ShieldHediff shield = pawn.health.hediffSet.GetFirstHediffOfDef(NagaDefOf.NagaShieldEmitter, false) as ShieldHediff;
+                ShieldHediff shield = ___pawn.health.hediffSet.GetFirstHediffOfDef(NagaDefOf.NagaShieldEmitter, false) as ShieldHediff;
                 shield.DrawWornExtras();
             }
         }
