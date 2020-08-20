@@ -5,11 +5,21 @@
     <mods>
       <li>Royalty</li>
     </mods>
-    <match Class="PatchOperationAdd">
-      <xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Naga"]/statBases</xpath>
-      <value>
-        <PsychicEntropyRecoveryRate>9.6</PsychicEntropyRecoveryRate>
-      </value>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Naga"]/statBases</xpath>
+          <value>
+            <PsychicEntropyRecoveryRate>9.6</PsychicEntropyRecoveryRate>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName = "Empire"]/permanentEnemyToEveryoneExcept</xpath>
+          <value>
+            <li>NagaPlayerColony</li>
+          </value>
+        </li>
+      </operations>
     </match>
   </Operation>
 

@@ -238,6 +238,8 @@ namespace SyrNaga
             if (__result != null && __result.def == NagaDefOf.Naga)
             {
                 __result.health.AddHediff(HediffMaker.MakeHediff(NagaDefOf.HiddenNagaHediff, __result));
+
+                __result.GetComp<AlienPartGenerator.AlienComp>().GetChannel("skin").second = NagaUtility.AssignSecondColor(__result.story.SkinColor);
             }
         }
     }
@@ -259,15 +261,8 @@ namespace SyrNaga
                 GraphicPaths currentGraphicPath = thingDef_AlienRace.alienRace.graphicPaths.GetCurrentGraphicPath(pawn.ageTracker.CurLifeStage);
                 string nakedPath = AlienPartGenerator.GetNakedPath(pawn.story.bodyType, currentGraphicPath.body, thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.useGenderedBodies ? pawn.gender.ToString() : "");
                 int variantIndex = pawn.thingIDNumber % ((pawn.gender == Gender.Female) ? HarmonyPatches.femaleVariants : HarmonyPatches.maleVariants);
-                __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(variantIndex == 0 ? nakedPath : nakedPath + variantIndex.ToString(),
-                    ShaderDatabase.CutoutComplex,
-                    Vector2.one,
-                    pawn.story.SkinColor,
-                    NagaUtility.AssignSecondColor(pawn.story.SkinColor));
-
-                //Giving normal hair colors
-                pawn.story.hairColor = PawnHairColors.RandomHairColor(pawn.story.SkinColor, 0);
-                __instance.hairGraphic = GraphicDatabase.Get<Graphic_Multi>(__instance.pawn.story.hairDef.texPath, __instance.hairGraphic.Shader, Vector2.one, pawn.story.hairColor, pawn.story.hairColor);
+                __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(variantIndex == 0 ? nakedPath : nakedPath + variantIndex.ToString(), ShaderDatabase.CutoutComplex, Vector2.one, 
+                    pawn.story.SkinColor, alienPartGenerator.SkinColor(pawn, false));
             }
         }
         public static GraphicPaths GetCurrentGraphicPath(this List<GraphicPaths> list, LifeStageDef lifeStageDef)

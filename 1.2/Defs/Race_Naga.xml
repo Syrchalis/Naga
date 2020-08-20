@@ -156,7 +156,7 @@
 						<first Class="ColorGenerator_Options">
 							<options>
 								<li>
-									<weight>1</weight>
+									<weight>2</weight>
 									<only>RGBA(0.875, 0.75, 0.625, 1)</only>
 								</li>
 								<li>
@@ -172,16 +172,16 @@
 									<only>RGBA(0.75, 0.375, 0.375, 1)</only>
 								</li>
 								<li>
-									<weight>1</weight>
+									<weight>0.5</weight>
 									<only>RGBA(1.0, 1.0, 0.9, 1)</only>
 								</li>
 								<li>
 									<weight>1</weight>
-									<only>RGBA(0.75, 0.875, 0.5, 1)</only>
+									<only>RGBA(0.9, 0.9, 0.5, 1)</only>
 								</li>
 								<li>
 									<weight>1</weight>
-									<only>RGBA(0.625, 0.75, 0.875, 1)</only>
+									<only>RGBA(0.675, 0.875, 1, 1)</only>
 								</li>
 								<li>
 									<weight>1</weight>
@@ -197,10 +197,50 @@
 							<options>
 								<li>
 									<weight>1</weight>
-									<only>RGBA(1.0,1.0,1.0,1)</only>
+									<only>RGBA(1.0, 0.0, 1.0, 1)</only>
 								</li>
 							</options>
 						</second>
+					</li>
+					<li>
+						<!-- This are just the vanilla hair colors -->
+						<name>hair</name>
+						<first Class="ColorGenerator_Options">
+							<options>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.2, 0.2, 0.2)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.31, 0.28, 0.26)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.25, 0.2, 0.15)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.3, 0.2, 0.1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.3529412, 0.227450982, 0.1254902)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.5176471, 0.3254902, 0.184313729)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.75686276, 0.572549045, 0.333333343)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.929411769, 0.7921569, 0.6117647)</only>
+								</li>
+							</options>
+						</first>
 					</li>
 				</colorChannels>
 			</alienPartGenerator>
