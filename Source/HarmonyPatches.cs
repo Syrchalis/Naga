@@ -284,15 +284,15 @@ namespace SyrNaga
         {
             if (apparel?.apparel?.bodyPartGroups != null && p?.def != null)
             {
-                if (apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Legs) && !apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Torso) && p.def == NagaDefOf.Naga)
+                if (p.def == NagaDefOf.Naga && apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Legs) && !apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Torso))
                 {
                     __result = false;
                 }
-                if (apparel.apparel.bodyPartGroups.Contains(NagaDefOf.Feet) && p.def == NagaDefOf.Naga)
+                if (p.def == NagaDefOf.Naga && apparel.apparel.bodyPartGroups.Contains(NagaDefOf.Feet) && !apparel.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.Torso))
                 {
                     __result = false;
                 }
-                if (apparel.apparel.bodyPartGroups.Contains(NagaDefOf.TailAttackTool) && p.def != NagaDefOf.Naga)
+                if (p.def != NagaDefOf.Naga && apparel.apparel.bodyPartGroups.Contains(NagaDefOf.TailAttackTool))
                 {
                     __result = false;
                 }
