@@ -39,7 +39,7 @@
 				<maxDamageForSocialfight>4</maxDamageForSocialfight>
 				<allowHumanBios>true</allowHumanBios>
 				<humanRecipeImport>true</humanRecipeImport>
-			<alienPartGenerator>      
+			<alienPartGenerator>
 				<aliencrowntypes>
 					<li>Average_Normal</li>
 					<li>Average_Pointy</li>

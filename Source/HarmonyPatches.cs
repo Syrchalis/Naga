@@ -259,10 +259,15 @@ namespace SyrNaga
                 //Changing body to random pattern variation and changing second color to appropiate pair
                 AlienPartGenerator alienPartGenerator = thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator;
                 GraphicPaths currentGraphicPath = thingDef_AlienRace.alienRace.graphicPaths.GetCurrentGraphicPath(pawn.ageTracker.CurLifeStage);
+                //Fixes randomly wrong gender/bodytype combination - cause still unknown!
+                if (pawn.gender == Gender.Female && pawn.story.bodyType == BodyTypeDefOf.Male || pawn.gender == Gender.Male && pawn.story.bodyType == BodyTypeDefOf.Female)
+                {
+                    pawn.story.bodyType = pawn.gender == Gender.Female ? BodyTypeDefOf.Female : BodyTypeDefOf.Male;
+                }
                 string nakedPath = AlienPartGenerator.GetNakedPath(pawn.story.bodyType, currentGraphicPath.body, thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.useGenderedBodies ? pawn.gender.ToString() : "");
                 int variantIndex = pawn.thingIDNumber % ((pawn.gender == Gender.Female) ? HarmonyPatches.femaleVariants : HarmonyPatches.maleVariants);
-                __instance.nakedGraphic = GraphicDatabase.Get<Graphic_Naga>(variantIndex == 0 ? nakedPath : nakedPath + variantIndex.ToString(), ShaderDatabase.CutoutComplex, Vector2.one, 
-                    pawn.story.SkinColor, alienPartGenerator.SkinColor(pawn, false));
+                __instance.nakedGraphic = GraphicDatabase.Get(typeof(Graphic_Naga), variantIndex == 0 ? nakedPath : nakedPath + variantIndex.ToString(), ShaderDatabase.CutoutComplex, Vector2.one, 
+                    pawn.story.SkinColor, alienPartGenerator.SkinColor(pawn, false), null, null);
             }
         }
         public static GraphicPaths GetCurrentGraphicPath(this List<GraphicPaths> list, LifeStageDef lifeStageDef)

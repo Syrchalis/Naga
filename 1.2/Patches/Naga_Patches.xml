@@ -23,6 +23,42 @@
     </match>
   </Operation>
 
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+				<li>Royalty</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			<!-- Guests -->
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/QuestScriptDef/root[@Class="QuestNode_Sequence"]/nodes/li[@Class="QuestNode_IsSet"]/node[@Class="QuestNode_GetRandomPawnKindForFaction"]/choices</xpath>
+					<value>
+						<li>
+							<factionDef>NagaMercenaries</factionDef>
+							<pawnKinds>
+								<li>Naga_Mercenary_Gunner</li>
+								<li>Naga_Mercenary_Sniper</li>
+							</pawnKinds>
+						</li>  
+					</value>
+				</li>
+				<!-- Mercenaries -->
+				<li Class="PatchOperationAdd">
+						<xpath>/Defs/QuestScriptDef/root[@Class="QuestNode_Sequence"]/nodes/li[@Class="QuestNode_GetRandomPawnKindForFaction"]/choices</xpath>
+					<value>
+						<li>
+							<factionDef>NagaMercenaries</factionDef>
+							<pawnKinds>
+								<li>Naga_Mercenary_Gunner</li>
+								<li>Naga_Mercenary_Sniper</li>
+							</pawnKinds>
+						</li>  
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/FactionDef[@Name = "OutlanderFactionBase"]/pawnGroupMakers//Town_Guard/..</xpath>
     <value>
