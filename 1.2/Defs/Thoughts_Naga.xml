@@ -12,6 +12,12 @@
         <baseOpinionOffset>-15</baseOpinionOffset>
       </li>
     </stages>
+    <nullifyingTraits>
+      <li>Ascetic</li>
+      <li>Kind</li>
+      <li>TorturedArtist</li>
+      <li>ShootingAccuracy</li>
+    </nullifyingTraits>
   </ThoughtDef>
 
 	<ThoughtDef>
