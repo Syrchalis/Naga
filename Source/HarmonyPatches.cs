@@ -108,6 +108,10 @@ namespace SyrNaga
                     {
                         nutritionIngested *= 1.0f;
                     }
+                    else if (animalP && nonMeat)
+                    {
+                        nutritionIngested *= 0.7f;
+                    }
                     else if (meat && animalP)
                     {
                         nutritionIngested *= 1.2f;
@@ -115,10 +119,6 @@ namespace SyrNaga
                     else if (meat && nonMeat)
                     {
                         nutritionIngested *= 0.7f;
-                    }
-                    else if (animalP && nonMeat)
-                    {
-                        nutritionIngested *= 0.8f;
                     }
                     else
                     {
