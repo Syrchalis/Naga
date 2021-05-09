@@ -104,7 +104,7 @@
       <MoveSpeed>-0.12</MoveSpeed>
     </equippedStatOffsets>
     <thingCategories>
-      <li>Apparel</li>
+      <li>ApparelArmor</li>
     </thingCategories>
     <costList>
       <Cloth>30</Cloth>
@@ -160,7 +160,7 @@
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
     <thingCategories>
-      <li>Apparel</li>
+      <li>ApparelUtility</li>
     </thingCategories>
     <apparel>
       <careIfWornByCorpse>false</careIfWornByCorpse>
@@ -202,7 +202,7 @@
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <thingCategories>
-      <li>Apparel</li>
+      <li>ApparelUtility</li>
     </thingCategories>
 		<generateAllowChance>0.15</generateAllowChance>
     <apparel>
