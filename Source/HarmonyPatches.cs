@@ -375,11 +375,11 @@ namespace SyrNaga
         }
     }
 
-    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal")]
-    public static class RenderPawnInternalPatch
+    [HarmonyPatch(typeof(PawnRenderer), "DrawDynamicParts")]
+    public static class DrawDynamicPartsPatch
     {
         [HarmonyPostfix]
-        public static void RenderPawnInternal_Postfix(Pawn ___pawn)
+        public static void DrawDynamicParts_Postfix(Pawn ___pawn)
         {
             if (___pawn.health != null && ___pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
             {

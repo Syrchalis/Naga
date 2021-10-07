@@ -110,7 +110,7 @@ namespace SyrNaga
 
         public void DrawWornExtras()
         {
-            if (!pawn.Dead && !pawn.Downed)
+            if (!pawn.Dead)
             {
                 float num = Mathf.Lerp(1.2f, 1.55f, shieldCurrent);
                 Vector3 vector = pawn.Drawer.DrawPos;
