@@ -82,7 +82,7 @@ namespace SyrNaga
             if (pawn.Spawned)
             {
                 SoundDefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map, false));
-                MoteMaker.ThrowLightningGlow(pawn.TrueCenter(), pawn.Map, 3f);
+                FleckMaker.ThrowLightningGlow(pawn.TrueCenter(), pawn.Map, 3f);
             }
             cooldownTicks = 0;
             shieldCurrent = shieldMax * 0.2f;
@@ -143,7 +143,7 @@ namespace SyrNaga
     [StaticConstructorOnStartup]
     public class Gizmo_HediffComp_Shield : Gizmo
     {
-        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             Rect overRect = new Rect(topLeft.x, topLeft.y, this.GetWidth(maxWidth), 75f);
             Find.WindowStack.ImmediateWindow(942612547, overRect, WindowLayer.GameUI, delegate

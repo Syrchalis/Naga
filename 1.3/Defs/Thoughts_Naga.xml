@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThoughtDef>
+    <defName>NagaThought</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>SyrNaga.ThoughtWorker_NagaThought</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>naga</label>
+        <baseOpinionOffset>-15</baseOpinionOffset>
+      </li>
+    </stages>
+    <nullifyingTraits>
+      <li>Ascetic</li>
+      <li>Kind</li>
+      <li>TorturedArtist</li>
+      <li>ShootingAccuracy</li>
+    </nullifyingTraits>
+  </ThoughtDef>
+
+	<ThoughtDef>
+		<defName>NagaCannibalism</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>1</durationDays>
+		<nullifyingTraits>
+			<li>Cannibal</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>cannibalism</label>
+				<description>I ate the meat of another naga, not a good feeling.</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>ButcheredNagaCorpse</defName>
+		<durationDays>6</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+		<nullifyingTraits>
+			<li>Psychopath</li>
+			<li>Bloodlust</li>
+			<li>Cannibal</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>I butchered naga</label>
+				<description>I butchered another naga, we do what we have to, even if it feels wrong.</description>
+				<baseMoodEffect>-2</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>KnowButcheredNagaCorpse</defName>
+		<durationDays>6</durationDays>
+		<stackLimit>1</stackLimit>
+		<nullifyingTraits>
+			<li>Psychopath</li>
+			<li>Bloodlust</li>
+			<li>Cannibal</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>we butchered naga</label>
+				<description>We butchered another naga, we do what we have to, even if it feels wrong.</description>
+				<baseMoodEffect>-2</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+  
+</Defs>

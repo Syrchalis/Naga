@@ -327,7 +327,7 @@ namespace SyrNaga
                             if (shieldHediff.broken)
                             {
                                 SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(__instance.Position, __instance.Map, false));
-                                MoteMaker.MakeStaticMote(__instance.TrueCenter(), __instance.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                                FleckMaker.Static(__instance.TrueCenter(), __instance.Map, FleckDefOf.ExplosionFlash, 12f);
                             }
                             else
                             {
@@ -335,11 +335,11 @@ namespace SyrNaga
                                 shieldHediff.impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle);
                                 Vector3 loc = __instance.TrueCenter() + shieldHediff.impactAngleVect.RotatedBy(180f) * 0.5f;
                                 float num = Mathf.Min(10f, 2f + dinfo.Amount / 10f);
-                                MoteMaker.MakeStaticMote(loc, __instance.Map, ThingDefOf.Mote_ExplosionFlash, num);
+                                FleckMaker.Static(__instance.TrueCenter(), __instance.Map, FleckDefOf.ExplosionFlash, num);
                                 int num2 = (int)num;
                                 for (int i = 0; i < num2; i++)
                                 {
-                                    MoteMaker.ThrowDustPuff(loc, __instance.Map, Rand.Range(0.8f, 1.2f));
+                                    FleckMaker.ThrowDustPuff(__instance.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle((float)Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f), __instance.Map, Rand.Range(0.8f, 1.2f));
                                 }
                             }
                             absorbed = true;
@@ -375,11 +375,11 @@ namespace SyrNaga
         }
     }
 
-    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal", new[] { typeof(Vector3), typeof(float), typeof(bool), typeof(Rot4), typeof(Rot4), typeof(RotDrawMode), typeof(bool), typeof(bool), typeof(bool) })]
+    [HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal")]
     public static class RenderPawnInternalPatch
     {
         [HarmonyPostfix]
-        public static void RenderPawnInternal_Postfix(PawnRenderer __instance, Pawn ___pawn, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
+        public static void RenderPawnInternal_Postfix(Pawn ___pawn)
         {
             if (___pawn.health != null && ___pawn.health.hediffSet.HasHediff(NagaDefOf.NagaShieldEmitter, false))
             {

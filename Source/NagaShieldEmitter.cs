@@ -45,7 +45,7 @@ namespace SyrNaga
                         }
                     }
                 }
-                MoteMaker.ThrowLightningGlow(Wearer.TrueCenter(), Wearer.Map, 4f);
+                FleckMaker.ThrowLightningGlow(Wearer.TrueCenter(), Wearer.Map, 4f);
                 ShieldEmitter(Wearer, Wearer.Map, radius, NagaDefOf.Mote_ShieldEmitter);
                 NagaDefOf.ShieldEmitterPop.PlayOneShot(new TargetInfo(Wearer.Position, Wearer.Map, false));
                 Destroy(DestroyMode.Vanish);

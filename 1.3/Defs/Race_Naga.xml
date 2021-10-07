@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<AlienRace.ThingDef_AlienRace ParentName="BasePawn">
+		<defName>Naga</defName>
+		<label>naga</label>
+		<description>The Naga are a technologically advanced race without a functional goverment or law enforcement since their homeworld has become inhabitable.  This means they can be found mostly on space stations and ships and occassionally on Rimworlds as well.\n\nThey tend to work as mercenaries for the highest bidder and offer their superior skills with guns. Not just as excellent shooters, but also as weapon manufacturers. Their plasma technology is only rivaled by the charge weapons of glitterworlds. Naga are also known for their regenerative abilities and proficiency at disassembling mechanoids.\n\nDespite this their way of life does not go well with others and thus they struggle to find allies among other races.\n\nGood at: Shooting, Butchering, Mechanoid Disassembly, Psychics, Quality Crafting/Construction\nBad at: Melee, Plants, Animals, Enduring Pain</description>
+		<alienRace>
+			<generalSettings>
+				<maleGenderProbability>0.4</maleGenderProbability>
+				<immuneToAge>false</immuneToAge>
+				<disallowedTraits>
+					<li>
+						<defName>Ascetic</defName>
+					</li>
+					<li>
+						<defName>Brawler</defName>
+					</li>
+					<li>
+						<defName>Undergrounder</defName>
+					</li>
+					<li>
+						<defName>BodyPurist</defName>
+					</li>
+					<li>
+						<defName>SlowLearner</defName>
+					</li>
+				</disallowedTraits>
+				<forcedRaceTraitEntries>
+					<li>
+						<defName>Bloodlust</defName>
+						<chance>5</chance>
+					</li>
+					<li>
+						<defName>FastLearner</defName>
+						<chance>10</chance>
+					</li>
+				</forcedRaceTraitEntries>
+				<maxDamageForSocialfight>4</maxDamageForSocialfight>
+				<allowHumanBios>true</allowHumanBios>
+				<humanRecipeImport>true</humanRecipeImport>
+			<alienPartGenerator>
+				<aliencrowntypes>
+					<li>Average_Normal</li>
+					<li>Average_Pointy</li>
+					<li>Average_Wide</li>
+					<li>Narrow_Normal</li>
+					<li>Narrow_Pointy</li>
+					<li>Narrow_Wide</li>
+				</aliencrowntypes>
+				<alienbodytypes>
+					<li>Male</li>
+					<li>Female</li>
+				</alienbodytypes>
+				<useGenderedHeads>true</useGenderedHeads>
+				<useGenderedBodies>false</useGenderedBodies>
+				<bodyAddons>
+					<li>
+						<drawSize>1</drawSize>
+						<path>Things/Naga/EarFin/EarFin</path>
+						<bodyPart>Ear</bodyPart>
+						<inFrontOfBody>true</inFrontOfBody>
+						<colorChannel>skin</colorChannel>
+            <alignWithHead>true</alignWithHead>
+						<offsets>
+							<south>
+								<offset>(0, 0)</offset>
+							</south>
+							<north>
+								<offset>(0, 0)</offset>
+							</north>
+							<east>
+								<offset>(0, 0)</offset>
+							</east>
+						</offsets>
+					</li>
+					<li>
+						<path>Things/Naga/Horns/Horns</path>
+						<bodyPart>Head</bodyPart>
+						<colorChannel>skin</colorChannel>
+						<inFrontOfBody>true</inFrontOfBody>
+						<alignWithHead>true</alignWithHead>
+						<offsets>
+							<south>
+								<offset>(0, 0)</offset>
+							</south>
+							<north>
+								<offset>(0, 0)</offset>
+							</north>
+							<east>
+								<offset>(0, 0)</offset>
+							</east>
+						</offsets>
+					</li>
+					<li>
+						<path>Things/Naga/Horns/HornsHidden</path>
+						<bodyPart>Head</bodyPart>
+						<colorChannel>skin</colorChannel>
+						<inFrontOfBody>false</inFrontOfBody>
+            <alignWithHead>true</alignWithHead>
+						<offsets>
+							<south>
+								<offset>(0, 0)</offset>
+							</south>
+							<north>
+								<offset>(0, 0)</offset>
+							</north>
+							<east>
+								<offset>(0, 0)</offset>
+							</east>
+						</offsets>
+					</li>
+				</bodyAddons>
+				<customDrawSize>(0.9, 0.9)</customDrawSize>
+				<customHeadDrawSize>(0.9, 0.9)</customHeadDrawSize>
+				<customPortraitDrawSize>(0.9, 0.9)</customPortraitDrawSize>
+				<customPortraitHeadDrawSize>(0.9, 0.9)</customPortraitHeadDrawSize>
+				<colorChannels>
+					<li>
+						<name>skin</name>
+						<first Class="ColorGenerator_Options">
+							<options>
+								<li>
+									<weight>2</weight>
+									<only>RGBA(0.875, 0.75, 0.625, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.625, 0.875, 0.625, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.5, 0.5, 0.5, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.75, 0.375, 0.375, 1)</only>
+								</li>
+								<li>
+									<weight>0.5</weight>
+									<only>RGBA(1.0, 1.0, 0.9, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.9, 0.9, 0.5, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.675, 0.875, 1, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.75, 0.625, 0.875, 1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.625, 0.875, 0.75, 1)</only>
+								</li>
+							</options>
+						</first>
+						<second Class="ColorGenerator_Options">
+							<options>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(1.0, 0.0, 1.0, 1)</only>
+								</li>
+							</options>
+						</second>
+					</li>
+					<li>
+						<!-- This are just the vanilla hair colors -->
+						<name>hair</name>
+						<first Class="ColorGenerator_Options">
+							<options>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.2, 0.2, 0.2)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.31, 0.28, 0.26)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.25, 0.2, 0.15)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.3, 0.2, 0.1)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.3529412, 0.227450982, 0.1254902)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.5176471, 0.3254902, 0.184313729)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.75686276, 0.572549045, 0.333333343)</only>
+								</li>
+								<li>
+									<weight>1</weight>
+									<only>RGBA(0.929411769, 0.7921569, 0.6117647)</only>
+								</li>
+							</options>
+						</first>
+					</li>
+				</colorChannels>
+			</alienPartGenerator>
+			</generalSettings>
+			<graphicPaths>
+				<li>
+					<head>Things/Naga/Head/</head>
+					<body>Things/Naga/Body/</body>
+				</li>
+			</graphicPaths>
+      <styleSettings>
+        <li>
+          <key>HairDef</key>
+          <value>
+            <hasStyle>true</hasStyle>
+          </value>
+        </li>
+        <li>
+          <key>BeardDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+      </styleSettings>
+			<thoughtSettings>
+				<cannotReceiveThoughts>
+					<li>AteRawFood</li>
+					<li>AteCorpse</li>
+					<li>Naked</li>
+					<li>ButcheredHumanlikeCorpse</li>
+					<li>KnowButcheredHumanlikeCorpse</li>
+					<li>AteHumanlikeMeatDirect</li>
+					<li>AteHumanlikeMeatAsIngredient</li>
+				</cannotReceiveThoughts>
+				<butcherThoughtSpecific>
+					<li>
+						<raceList>
+							<li>Naga</li>
+						</raceList>
+						<thought>ButcheredNagaCorpse</thought>
+						<knowThought>KnowButcheredNagaCorpse</knowThought>
+					</li>
+				</butcherThoughtSpecific>
+				<ateThoughtSpecific>
+					<li>
+						<raceList>
+							<li>Naga</li>
+						</raceList>
+						<thought>NagaCannibalism</thought>
+						<ingredientThought>NagaCannibalism</ingredientThought>
+					</li>
+				</ateThoughtSpecific>
+			</thoughtSettings>
+			<raceRestriction>
+				<apparelList>
+					<li>Apparel_FlakTailArmor</li>
+				</apparelList>
+				<recipeList>
+					<li>Make_Gun_NagaRevolver</li>
+					<li>Make_Gun_NagaSMG</li>
+					<li>Make_Gun_NagaShotgun</li>
+					<li>Make_Gun_NagaRifle</li>
+					<li>Make_Gun_NagaSniper</li>
+					<li>Make_Apparel_NagaShieldBelt</li>
+					<li>Make_Apparel_NagaShieldEmitter</li>
+				</recipeList>
+			</raceRestriction>
+		</alienRace>
+		<statBases>
+			<MarketValue>1750</MarketValue>
+			<MoveSpeed>5.0</MoveSpeed>
+			<Mass>80</Mass>
+			<Flammability>0.33</Flammability>
+			<LeatherAmount>75</LeatherAmount>
+			<RoyalFavorValue>2</RoyalFavorValue>
+			<ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+			<PsychicSensitivity>1.2</PsychicSensitivity>
+			<ToxicSensitivity>0.5</ToxicSensitivity>
+			<ComfyTemperatureMin>21</ComfyTemperatureMin>
+			<ComfyTemperatureMax>36</ComfyTemperatureMax>
+			<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
+			<PainShockThreshold>0.64</PainShockThreshold>
+			<AimingDelayFactor>0.8</AimingDelayFactor>
+			<TameAnimalChance>0.8</TameAnimalChance>
+			<TrainAnimalChance>0.8</TrainAnimalChance>
+			<AnimalGatherYield>0.8</AnimalGatherYield>
+			<PlantWorkSpeed>0.8</PlantWorkSpeed>
+			<ButcheryFleshEfficiency>1.1</ButcheryFleshEfficiency>
+			<ButcheryMechanoidEfficiency>1.5</ButcheryMechanoidEfficiency>
+		</statBases>
+		<tools>
+			<li>
+				<label>left fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+				<chanceFactor>0.25</chanceFactor>
+			</li>
+			<li>
+				<label>right fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+				<chanceFactor>0.25</chanceFactor>
+			</li>
+			<li>
+				<label>fangs</label>
+				<capacities>
+					<li>VenomousBite</li>
+				</capacities>
+				<power>4.0</power>
+				<cooldownTime>2.0</cooldownTime>
+				<linkedBodyPartsGroup>Fangs</linkedBodyPartsGroup>
+				<chanceFactor>1</chanceFactor>
+			</li>
+			<li>
+				<label>tail</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.5</chanceFactor>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>10</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</tools>
+		<race>
+			<thinkTreeMain>Humanlike</thinkTreeMain>
+			<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+			<intelligence>Humanlike</intelligence>
+			<makesFootprints>true</makesFootprints>
+			<lifeExpectancy>70</lifeExpectancy>
+			<leatherDef>Leather_Lizard</leatherDef>
+			<nameCategory>HumanStandard</nameCategory>
+			<fleshType>Naga</fleshType>
+			<bloodDef>Filth_BloodNaga</bloodDef>
+			<body>Naga_Body</body>
+			<baseBodySize>1</baseBodySize>
+			<baseHealthScale>0.8</baseHealthScale>
+			<foodType>OmnivoreHuman</foodType>
+			<gestationPeriodDays>45</gestationPeriodDays>
+			<manhunterOnDamageChance>0.50</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.15</manhunterOnTameFailChance>
+			<litterSizeCurve>
+				<points>
+					<li>(0.5, 0)</li>
+					<li>(1, 1)</li>
+					<li>(1.01, 0.02)</li>
+					<li>(3.5, 0)</li>
+				</points>
+			</litterSizeCurve>
+			<lifeStageAges>
+				<li>
+					<def>NagaBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>NagaToddler</def>
+					<minAge>1.2</minAge>
+				</li>
+				<li>
+					<def>NagaChild</def>
+					<minAge>4</minAge>
+				</li>
+				<li>
+					<def>NagaTeenager</def>
+					<minAge>13</minAge>
+				</li>
+				<li>
+					<def>NagaAdult</def>
+					<minAge>18</minAge>
+					<soundWounded>Pawn_Cobra_Wounded</soundWounded>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+			<specialShadowData>
+				<volume>(0.3, 0.8, 0.4)</volume>
+				<offset>(0,0,-0.3)</offset>
+			</specialShadowData>
+			<ageGenerationCurve>
+				<points>
+					<li>(14,0)</li>
+					<li>(16,100)</li>
+					<li>(50,100)</li>
+					<li>(60,30)</li>
+					<li>(70,18)</li>
+					<li>(80,10)</li>
+					<li>(90,3)</li>
+					<li>(100,0)</li>
+				</points>
+			</ageGenerationCurve>
+			<hediffGiverSets>
+				<li>OrganicStandard</li>
+			</hediffGiverSets>
+		</race>
+		<recipes>
+			<li>InstallBionicNagaTail</li>
+			<li>InstallArchotechNagaTail</li>
+		</recipes>
+	</AlienRace.ThingDef_AlienRace>
+	
+	<AlienRace.RaceSettings>
+		<defName>Naga_Settings</defName>
+		<pawnKindSettings>
+			<startingColonists>
+				<li>
+					<pawnKindEntries>
+						<li>
+							<kindDefs>
+								<li>Naga_Colonist</li>
+							</kindDefs>
+							<chance>10</chance>
+						</li>
+					</pawnKindEntries>
+					<factionDefs>
+						<li>NagaPlayerColony</li>
+						<li>PlayerColony</li>
+					</factionDefs>
+				</li>
+				<li>
+					<pawnKindEntries>
+						<li>
+							<kindDefs>
+								<li>Naga_Colonist</li>
+							</kindDefs>
+							<chance>3</chance>
+						</li>
+					</pawnKindEntries>
+					<factionDefs>
+						<li>PlayerTribe</li>
+					</factionDefs>
+				</li>
+			</startingColonists>
+			<alienrefugeekinds>
+				<li>
+					<kindDefs>
+						<li>Naga_Refugee</li>
+					</kindDefs>
+					<chance>10.0</chance>
+				</li>
+			</alienrefugeekinds>
+			<alienslavekinds>
+				<li>
+					<kindDefs>
+							<li>Naga_Slave</li>
+					</kindDefs>
+					<chance>10.0</chance>
+				</li>
+			</alienslavekinds>
+			<alienwandererkinds>
+				<li>
+					<pawnKindEntries>
+						<li>
+							<kindDefs>
+								<li>Naga_Wanderer</li>
+							</kindDefs>
+							<chance>15.0</chance>
+						</li>
+					</pawnKindEntries>
+					<factionDefs>
+						<li>NagaMercenaries</li> 
+					</factionDefs>
+				</li>
+			</alienwandererkinds>
+		</pawnKindSettings>
+	</AlienRace.RaceSettings>
+	
+	<LifeStageDef>
+		<defName>NagaBaby</defName>
+		<label>baby</label>
+		<bodySizeFactor>0.2</bodySizeFactor>
+		<foodMaxFactor>1.5</foodMaxFactor>
+		<healthScaleFactor>0.2</healthScaleFactor>
+		<hungerRateFactor>0.2</hungerRateFactor>
+		<marketValueFactor>0.5</marketValueFactor>
+		<meleeDamageFactor>0.5</meleeDamageFactor>
+		<statFactors>
+			<MoveSpeed>0.2</MoveSpeed>
+		</statFactors>
+	</LifeStageDef>
+
+	<LifeStageDef>
+		<defName>NagaToddler</defName>
+		<label>toddler</label>
+		<bodySizeFactor>0.32</bodySizeFactor>
+		<foodMaxFactor>1.5</foodMaxFactor>
+		<healthScaleFactor>0.4</healthScaleFactor>
+		<hungerRateFactor>0.4</hungerRateFactor>
+		<marketValueFactor>0.7</marketValueFactor>
+		<meleeDamageFactor>0.6</meleeDamageFactor>
+		<statFactors>
+			<MoveSpeed>0.3</MoveSpeed>
+		</statFactors>
+	<shearable>true</shearable>
+	</LifeStageDef>
+
+	<LifeStageDef>
+		<defName>NagaChild</defName>
+		<label>child</label>
+		<bodySizeFactor>0.5</bodySizeFactor>
+		<healthScaleFactor>0.5</healthScaleFactor>
+		<hungerRateFactor>0.6</hungerRateFactor>
+		<marketValueFactor>0.9</marketValueFactor>
+		<meleeDamageFactor>0.7</meleeDamageFactor>
+		<statFactors>
+			<MoveSpeed>0.65</MoveSpeed>
+		</statFactors>
+	<shearable>true</shearable>
+	</LifeStageDef>
+
+	<LifeStageDef>
+		<defName>NagaTeenager</defName>
+		<label>teenager</label>
+		<adjective>teenage</adjective>
+		<reproductive>true</reproductive>
+		<bodySizeFactor>0.85</bodySizeFactor>
+		<healthScaleFactor>0.90</healthScaleFactor>
+		<meleeDamageFactor>0.75</meleeDamageFactor>
+		<statFactors>
+			<MoveSpeed>0.95</MoveSpeed>
+		</statFactors>
+	<shearable>true</shearable>
+	</LifeStageDef>
+	
+	<LifeStageDef>
+		<defName>NagaAdult</defName>
+		<label>adult</label>
+		<visible>false</visible>
+		<reproductive>true</reproductive>
+		<milkable>true</milkable>
+		<shearable>true</shearable>
+	</LifeStageDef>
+
+  <FleshTypeDef ParentName="NormalFleshTypeBase">
+    <defName>Naga</defName>
+    <genericWounds>
+			<li>
+				<texture>Things/Naga/Wounds/WoundNagaA</texture>
+			</li>
+			<li>
+				<texture>Things/Naga/Wounds/WoundNagaB</texture>
+			</li>
+			<li>
+				<texture>Things/Naga/Wounds/WoundNagaC</texture>
+			</li>
+    </genericWounds>
+  </FleshTypeDef>
+
+</Defs>

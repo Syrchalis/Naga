@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>InstallBionicNagaTail</defName>
+    <label>install bionic naga tail</label>
+    <description>Install a bionic naga tail.</description>
+    <workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+    <jobString>Installing bionic naga tail.</jobString>
+    <workAmount>2500</workAmount>
+    <skillRequirements>
+      <Medicine>5</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BionicNagaTail</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>BionicNagaTail</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>NagaTail</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BionicNagaTail</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>InstallArchotechNagaTail</defName>
+    <label>install archotech naga tail</label>
+    <description>Install a archotech naga tail.</description>
+    <workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+    <jobString>Installing archotech naga tail.</jobString>
+    <workAmount>3000</workAmount>
+    <skillRequirements>
+      <Medicine>3</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ArchotechNagaTail</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>ArchotechNagaTail</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>NagaTail</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ArchotechNagaTail</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>Make_ArchotechNagaTail</defName>
+    <label>make archotech naga tail</label>
+    <description>Make an archotech naga tail from two archotech legs.</description>
+    <jobString>Making archotech naga tail.</jobString>
+    <workAmount>40000</workAmount>
+    <researchPrerequisite>Bionics</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ArchotechLeg</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ArchotechLeg</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <ArchotechNagaTail>1</ArchotechNagaTail>
+    </products>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <recipeUsers>
+      <li>TableNagaMachining</li>
+    </recipeUsers>
+  </RecipeDef>
+
+</Defs>

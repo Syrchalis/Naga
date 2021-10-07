@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>BionicNagaTail</defName>
+    <label>bionic naga tail</label>
+    <description>An advanced artificial tail for naga. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological tail in almost every way.</description>
+    <techLevel>Spacer</techLevel>
+    <costList>
+      <Plasteel>30</Plasteel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>12</Mass>
+    </statBases>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BodyPartArchotechBase">
+    <defName>ArchotechNagaTail</defName>
+    <label>archotech naga tail</label>
+    <description>An artifical tail made from two combined archotech legs. It looks and feels like natural flesh, but can move the user as fast as a decent car, and it's harder to damage than plasteel. Even if it is harmed, it repairs itself over time. Its internal workings are a mystery to all human minds.</description>
+    <techLevel>Archotech</techLevel>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <statBases>
+      <MarketValue>5600</MarketValue>
+      <Mass>14</Mass>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseFilth">
+    <defName>Filth_BloodNaga</defName>
+    <label>naga blood</label>
+    <statBases>
+      <Beauty>-20</Beauty>
+      <Cleanliness>-8</Cleanliness>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Filth/Spatter</texPath>
+      <color>(32, 160, 48, 180)</color>
+    </graphicData>
+    <filth>
+      <rainWashes>true</rainWashes>
+      <cleaningWorkToReduceThickness>70</cleaningWorkToReduceThickness>
+      <canFilthAttach>true</canFilthAttach>
+    </filth>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ShieldEmitter</defName>
+	  <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/Mote_ShieldEmitter</texPath>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+      <growthRate>40</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ShieldEmitterBurst</defName>
+	  <thingClass>SyrNaga.EmitterMote</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/Mote_ShieldEmitterBurst</texPath>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0.5</solidTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MealCooked">
+    <defName>MealSimple_Naga</defName>
+    <label>simple meal (meat)</label>
+    <description>A simple meal quickly cooked from meat or animal products only. This is useful only for races that need meat as nutrition, like naga.</description>
+    <graphicData>
+      <texPath>Things/Item/Simple_meat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <WorkToMake>300</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealSimple</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="MealCooked">
+    <defName>MealFine_Naga</defName>
+    <label>fine meal (meat)</label>
+    <description>A complex dish assembled with care from a meat and animal products. This is useful only for races that need meat as nutrition, like naga.</description>
+    <graphicData>
+      <texPath>Things/Item/Fine_meat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <WorkToMake>450</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <tasteThought>AteFineMeal</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+</Defs>

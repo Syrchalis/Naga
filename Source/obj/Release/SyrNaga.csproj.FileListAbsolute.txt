@@ -8,3 +8,4 @@ S:\Program Files\Steam\steamapps\common\RimWorld\Mods\SYR_Naga\1.2\Assemblies\Sy
 S:\Program Files\Steam\steamapps\common\RimWorld\Mods\SYR_Naga\Source\obj\Release\SyrNaga.csprojAssemblyReference.cache
 S:\Program Files\Steam\steamapps\common\RimWorld\Mods\SYR_Naga\Source\obj\Release\SyrNaga.csproj.CoreCompileInputs.cache
 S:\Program Files\Steam\steamapps\common\RimWorld\Mods\SYR_Naga\Source\obj\Release\SyrNaga.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SYR_Naga\1.3\Assemblies\SyrNaga.dll
