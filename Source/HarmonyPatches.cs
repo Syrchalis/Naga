@@ -280,7 +280,7 @@ namespace SyrNaga
         }
     }
 
-
+    //Naga cant wear pants, other races can't wear tail gear
     [HarmonyPatch(typeof(ApparelUtility), nameof(ApparelUtility.HasPartsToWear))]
     public static class HasPartsToWearPatch
     {
@@ -304,6 +304,100 @@ namespace SyrNaga
             }
         }
     }
+
+    //Naga don't need to cover their groin because they can't
+    [HarmonyPatch(typeof(ThoughtWorker_Precept_GroinUncovered), nameof(ThoughtWorker_Precept_GroinUncovered.HasUncoveredGroin))]
+    public static class HasUncoveredGroinPatch
+    {
+        [HarmonyPostfix]
+        public static void HasUncoveredGroin_Postfix(ref bool __result, Pawn p)
+        {
+            if (p != null && __result && p.def == NagaDefOf.Naga)
+            {
+                __result = false;
+            }
+        }
+    }
+    [HarmonyPatch(typeof(ThoughtWorker_Precept_GroinOrChestUncovered), nameof(ThoughtWorker_Precept_GroinOrChestUncovered.HasUncoveredGroinOrChest))]
+    public static class HasUncoveredGroinOrChestPatch
+    {
+        [HarmonyPostfix]
+        public static void HasUncoveredGroinOrChest_Postfix(ref bool __result, Pawn p)
+        {
+            if (p != null && __result && p.def == NagaDefOf.Naga)
+            {
+                foreach (BodyPartGroupDef bodyPartGroup in p.apparel.WornApparel.SelectMany(x => x.def.apparel.bodyPartGroups))
+                {
+                    if (bodyPartGroup == BodyPartGroupDefOf.Torso)
+                    {
+                        __result = false;
+                    }
+                }
+            }
+        }
+    }
+    [HarmonyPatch(typeof(ThoughtWorker_Precept_GroinChestOrHairUncovered), nameof(ThoughtWorker_Precept_GroinChestOrHairUncovered.HasUncoveredGroinChestOrHair))]
+    public static class HasUncoveredGroinChestOrHairPatch
+    {
+        [HarmonyPostfix]
+        public static void HasUncoveredGroinChestOrHair_Postfix(ref bool __result, Pawn p)
+        {
+            if (p != null && __result && p.def == NagaDefOf.Naga)
+            {
+                bool torso = false;
+                bool hair = false;
+                foreach (BodyPartGroupDef bodyPartGroup in p.apparel.WornApparel.SelectMany(x => x.def.apparel.bodyPartGroups))
+                {
+                    if (bodyPartGroup == BodyPartGroupDefOf.Torso)
+                    {
+                        torso = true;
+                    }
+                    if (bodyPartGroup == BodyPartGroupDefOf.UpperHead || bodyPartGroup == BodyPartGroupDefOf.FullHead)
+                    {
+                        hair = true;
+                    }
+                }
+                __result = !torso || !hair;
+            }
+        }
+    }
+    [HarmonyPatch(typeof(ThoughtWorker_Precept_GroinChestHairOrFaceUncovered), nameof(ThoughtWorker_Precept_GroinChestHairOrFaceUncovered.HasUncoveredGroinChestHairOrFace))]
+    public static class HHasUncoveredGroinChestHairOrFacePatch
+    {
+        [HarmonyPostfix]
+        public static void HasUncoveredGroinChestHairOrFace_Postfix(ref bool __result, Pawn p)
+        {
+            if (p != null && __result && p.def == NagaDefOf.Naga)
+            {
+                bool torso = false;
+                bool hair = false;
+                bool face = false;
+                foreach (BodyPartGroupDef bodyPartGroup in p.apparel.WornApparel.SelectMany(x => x.def.apparel.bodyPartGroups))
+                {
+                    if (bodyPartGroup == BodyPartGroupDefOf.Torso)
+                    {
+                        torso = true;
+                    }
+                    if (bodyPartGroup == BodyPartGroupDefOf.UpperHead)
+                    {
+                        hair = true;
+                    }
+                    if (bodyPartGroup == BodyPartGroupDefOf.Eyes)
+                    {
+                        face = true;
+                    }
+                    if (bodyPartGroup == BodyPartGroupDefOf.FullHead)
+                    {
+                        hair = true;
+                        face = true;
+                    }
+                }
+                __result = !torso || !hair || !face;
+            }
+        }
+    }
+
+
 
     [HarmonyPatch(typeof(Pawn), nameof(Pawn.PreApplyDamage))]
     public static class PreApplyDamagePatch
